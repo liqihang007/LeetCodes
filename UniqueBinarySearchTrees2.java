@@ -26,6 +26,7 @@ public class UniqueBinarySearchTrees2 {
 		    TreeNode right;
 		    TreeNode(int x) { val = x; left = null; right = null; }
 		}
+	
 //	Recursive - O(n*n)
 //	Given a consecutive sequence, eg. [1,2,3,4,5].
 //	The way to generate every possible binary search tree for this sequence is take each number as root node and then assign both child.
@@ -35,23 +36,32 @@ public class UniqueBinarySearchTrees2 {
 //	Then take 3 as root node, then left child will be [1,2], right child will be sequence [4,5].
 //	Next take 4 as root node, then left child will be [1,2,3], right child will be [5].
 //	Finally take 5 as root node, then left child will be [1,2,3,4], right child will be null.
+	
 	public static List<TreeNode> generateTrees(int n) {
-        return findalltrees(1,n+1);
+        return buildtrees(1,n+1);
     }
 	
-	public List<TreeNode> findalltrees(int min, int max){
+	public List<TreeNode> buildtrees(int min, int max){
 		List<TreeNode> res= new ArrayList<>();
 		if(min>=max){
 			TreeNode root=null;
 			res.add(root);
 		}
 		for(int i=min;i<max;i++){
-			List<TreeNode> left= findalltrees(min,i);
-			List<TreeNode> right= findalltrees(i+1,max);
-			
-			
+			List<TreeNode> left= buildtrees(min,i);
+			List<TreeNode> right= buildtrees(i+1,max);
+			for(int x=0;x<left.size();x++){
+				for(int y=0;y<right.size();y++){
+					TreeNode node = new TreeNode(i);
+					node.left=left.get(x);
+					node.right=right.get(y);
+					res.add(node);
+				}
+			}
 		}
+		return res;
 	}
+	
 ////	HashMap (+DP?) - O(n*n*logn)
 ////	The idea is to generate binary trees for every number from 1 and store them in map. 
 ////	And for every next N get roots from 1 to N and just link left and right subtrees generated previously. 

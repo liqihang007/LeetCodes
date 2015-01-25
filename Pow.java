@@ -1,7 +1,8 @@
+//Implement pow(x, n).
 
 public class Pow {
 	
-	public static double pow(double x, int n) {
+	public static double pow(double x, int n) { // Newton
 		double myreturn;
 		if(n==0){
 			myreturn=1;

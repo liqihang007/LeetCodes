@@ -1,5 +1,6 @@
-import java.util.Arrays;
+// Top-K problem, search k largest(or smallest) numbers in an array.
 
+import java.util.*;
 
 public class TopK {
 	// top largest - min heap - heap[0] is the k-th largetest 
