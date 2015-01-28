@@ -41,11 +41,9 @@ public class BinaryTreeLevelOrderTraversal {
 	
 	public static void filllist(TreeNode node, int i, List<List<Integer>> res){
 		if(node==null){return;}
-		else{
-			res.get(i).add(node.val);
-			filllist(node.left,i+1,res);
-			filllist(node.right,i+1,res);
-		}
+		res.get(i).add(node.val);
+		filllist(node.left,i+1,res);
+		filllist(node.right,i+1,res);
 	}
 	
 	public static int findheight(TreeNode node, int i){

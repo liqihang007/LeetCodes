@@ -1,11 +1,11 @@
-//Given a binary tree, return the preorder traversal of its nodes' values.
+//Given a binary tree, return the inorder traversal of its nodes' values.
 //For example: Given binary tree {1,#,2,3},
 //   1
 //    \
 //     2
 //    /
 //   3
-//return [1,2,3].
+//return [1,3,2].
 
 /**
  * Definition for binary tree
@@ -19,19 +19,19 @@
 
 import java.util.*;
 
-public class BinaryTreePreorderTraversal {
+public class BinaryTreeInorderTraversal {
 
-	public List<Integer> preorderTraversal(TreeNode root) {
+	public List<Integer> inorderTraversal(TreeNode root) {
 		List<Integer>res=new ArrayList<Integer>();
-		travel_preorder(root,res);
-		return res;
+        travel_inorder(root,res);
+        return res; 
     }
 	
-	public void travel_preorder(TreeNode node, List<Integer> res){
+	public void travel_inorder(TreeNode node, List<Integer> res){
 		if(node==null){return;}
+		travel_inorder(node.left, res);
 		res.add(node.val);
-		travel_preorder(node.left, res);
-		travel_preorder(node.right, res);
+		travel_inorder(node.right, res);
 	}
 	
 	public static void main(String[] args) {

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //A message containing letters from A-Z is being encoded to numbers using the following mapping:
 //'A' -> 1
 //'B' -> 2
@@ -7,89 +9,77 @@
 //For example, Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
 //The number of ways decoding "12" is 2.
 
-public class DecodeWays 
-{
-    public static int numDecodings(String s) 
-    {
-    	if(s==null || s.length()==0 || Character.getNumericValue(s.charAt(0))==0) return 0;
-    	if(s.length()==1) return 1;
-    	if(s.length()==2)
-    	{
-    		int a=Integer.parseInt(s);
-    		if(Character.getNumericValue(s.charAt(1))==0)
-    		{
-    			if(Character.getNumericValue(s.charAt(0))>2) return 0;
-    			else return 1;
-    		}
-    		else
-    		{
-    			if(a<=26) return 2;
-    			else return 1;
-    		}
+public class DecodeWays {
+	
+	public static int numDecodings(String s) {	// DP
+		if(s==null || s.length()<=0 || Character.getNumericValue(s.charAt(0))==0){return 0;}
+		char[] nums = s.toCharArray();
+		if(s.length()==1){
+    		if(nums[0]==0){return 0;}
+    		return 1;
     	}
-    	int[] check=new int[s.length()-2];
-    	for(int i=2;i<s.length();i++) check[i-2]=0;
-    	if(Character.getNumericValue(s.charAt(2))==0)
-    	{
-    		if(Character.getNumericValue(s.charAt(1))==0 || Character.getNumericValue(s.charAt(1))>2)
-    			return 0;
-    		else check[0]=1;
+		int []check=new int[nums.length];
+		check[0]=1;
+		for(int i=1;i<nums.length;i++){
+			check[i]=check[i-1];
+			if(nums[i]=='0' && !(nums[i-1]=='1' || nums[i-1]=='2')){ // 00 or 30, 40 ...
+				return 0;
+			}
+			if(nums[i-1]=='1' && nums[i]!='0' && ((i+1<nums.length && nums[i+1]!='0') || i==nums.length-1)){ // 11-19, but not 110,190...
+				if(i>2){check[i]+=check[i-2];}
+				else{check[i]+=1;}
+			}
+			if(nums[i-1]=='2' && nums[i]>='1' && nums[i]<='6'){ // 21-26, but not 210,260...
+				if(i>2){check[i]+=check[i-2];}
+				else{check[i]+=1;}
+			}
     	}
-    	else check[0]=3;
-    	
-    	
-    	for(int i=1;i<s.length()-2;i++)
-    	{
-    		int a=Character.getNumericValue(s.charAt(i+2));
-    		int b=Character.getNumericValue(s.charAt(i+1));
-    		int d=Character.getNumericValue(s.charAt(i));
-    		int c1=Integer.parseInt(s.substring(i+1,i+3));
-    		int c2=Integer.parseInt(s.substring(i,i+2));
-//    		System.out.println(b+""+a+" "+c1);
-    		if(a==0)
-    		{
-    			if(b>2 || b==0) return 0;
-    			else
-    			{
-    				check[i]=check[i-1]-1;
-    			}
-    		}
-    		else
-    		{
-    			if(c1>26)
-    			{
-    				check[i]=check[i-1];
-    			}
-    			else
-    			{
-    				if(i>=2)
-    				{
-	    				if(b==0)
-	    				{
-	    					check[i]=check[i-1];
-	    				}
-	    				else
-	    				{
-	    					if(d==0 || c2>26) check[i]=check[i-1]+1;
-	    					else check[i]=check[i-2]+2;
-	    				}
-    				}
-    				else check[i]=check[i-1]+1;
-    					
-    			}
-    		}
-    	}
-    	System.out.println(check[0]+""+check[1]);//+""+check[2]+""+check[3]);
-    	return check[s.length()-3];
-    }
+		return check[check.length-1];
+	}
+
+//    public static int numDecodings(String s) {	// recursive
+//    	if(s==null || s.length()<=0 || Character.getNumericValue(s.charAt(0))==0){return 0;}
+//    	if(s.length()==1){
+//    		int test= Integer.parseInt(s);
+//    		if(test==0){return 0;}
+//    		return 1;
+//    	}
+//    	if(s.length()==2){
+//    		int test= Integer.parseInt(s);
+//    		if(test==0 || (test%10==0 && test>26)){return 0;}
+//    		if(test==10 || test==20 || test>26){return 1;}
+//    		return 2;
+//    	}
+//    	if(s.length()>2){
+//    		if(s.charAt(0)=='0'){return 0;}
+//    		int test = Integer.parseInt(s.substring(0,2));
+//    		if(test==0 || (test%10==0 && test>26)){return 0;}
+//    		if(test==10 || test==20){
+//    			return numDecodings(s.substring(2,s.length()));
+//    		}
+//    		else{
+//    			if(test>26){
+//    				return numDecodings(s.substring(1,s.length()));
+//    			}
+//    			else{
+//    				return numDecodings(s.substring(1,s.length()))+numDecodings(s.substring(2,s.length()));
+//    			}
+//    		}
+//    	}
+//    	return 0;
+//    }
 	
 	public static void main(String[] args) 
 	{
-		String s1;
-//		s1="101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010";
-//		s1="6065812287883668764831544958683283296479682877898293612168136334983851946827579555449329483852397155";
-//		s1="4757562545844617494555774581341211511296816786586787755257741178599337186486723247528324612117156948";
-		s1="1010101010";
+		String s1="1010101010";
+		String s2="230";
+		String s3="11";
+		String s4="611";
+		String s5="9371597631128776948387197132267188677349946742344217846154932859125134924241649584251978418763151253";
 		System.out.println(numDecodings(s1));
+		System.out.println(numDecodings(s2));
+		System.out.println(numDecodings(s3));
+		System.out.println(numDecodings(s4));
+		System.out.println(numDecodings(s5));
 	}
 }
