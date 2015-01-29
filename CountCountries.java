@@ -14,15 +14,15 @@ import java.util.*;
 
 public class CountCountries {
 	
-	public void bsf(int [][] A, boolean [][] visited, int i, int j, int label){
+	public void bfs(int [][] A, boolean [][] visited, int i, int j, int label){
 		if(i<0 || i>A.length-1 || j<0 || j>A[0].length-1 || visited[i][j]==true || A[i][j]!=label){
 			return;
 		}
 		visited[i][j]=true;
-		bsf(A,visited,i+1,j,label);
-		bsf(A,visited,i-1,j,label);
-		bsf(A,visited,i,j+1,label);
-		bsf(A,visited,i,j-1,label);
+		bfs(A,visited,i+1,j,label);
+		bfs(A,visited,i-1,j,label);
+		bfs(A,visited,i,j+1,label);
+		bfs(A,visited,i,j-1,label);
 	}
 	
 	public int countCountries(int[][] A){
@@ -38,7 +38,7 @@ public class CountCountries {
 			for(int j=0;j<A[0].length;j++){
 				if(!visited[i][j]){
 					res++;
-					bsf(A,visited, i,j,A[i][j]);
+					bfs(A,visited, i,j,A[i][j]);
 				}
 			}
 		}
@@ -47,7 +47,10 @@ public class CountCountries {
 	
 	public static void main(String[] args) {
 		CountCountries test=new CountCountries();
-		int[][]A=new int[][]{{1,1,1,1},{0,1,1,0},{0,0,0,1},{1,0,0,1}};
+		int[][]A=new int[][]{{0,0,1,1},
+							 {1,1,1,0},
+							 {0,0,0,1},
+							 {1,0,0,1}};
 		System.out.println(test.countCountries(A));
 	}
 }
