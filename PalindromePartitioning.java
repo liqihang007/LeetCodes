@@ -14,32 +14,42 @@ public class PalindromePartitioning {
 	public static List<List<String>> partition(String s) {
 		List<List<String>> res = new ArrayList<List<String>>();
 		if(s==null || s.length()==0){return res;}
-		ArrayList<String> sub = new ArrayList<String>();
-		findpart(s, sub, res);
+		ArrayList<String> list = new ArrayList<String>();
+		findpart_DP(res, new ArrayList<String>(), s, 0, checkpal_DP(s));
+//		findpart(res, new ArrayList<String>(), s, 0);
 		return res;
     }
 	
-	public static void findpart(String s, ArrayList<String> sub, List<List<String>> res){
-		if(s.length()>0){
-			for(int i=1;i<=s.length();i++){
-				if(check(s.substring(0,i))){
-					if(i==s.length()){
-						sub.add(s.substring(0,i));
-						res.add(sub);
-						return;
-					}
-					else{
-						ArrayList<String> sub2= new ArrayList<String>(sub);
-						sub2.add(s.substring(0,i));
-						findpart(s.substring(i,s.length()),sub2,res);
-					}
-				}
+	public static void findpart_DP(List<List<String>> res, ArrayList<String> list,
+			String s, int pos, boolean[][]table){
+		if(pos>=s.length()){
+			res.add(new ArrayList<String>(list));
+			return;
+		}
+		for(int i=pos;i<s.length();i++){
+			if(table[pos][i]){
+				list.add(s.substring(pos,i+1));
+				findpart_DP(res, list, s, i+1, table);
+				list.remove(list.size()-1);
 			}
 		}
-		return;
 	}
 	
-	public static boolean check(String s){
+	public static void findpart(List<List<String>> res, ArrayList<String> list, String s, int pos){
+		if(pos>=s.length()){
+			res.add(new ArrayList<String>(list));
+			return;
+		}
+		for(int i=pos+1;i<=s.length();i++){
+			if(checkpal(s.substring(pos,i))){
+				list.add(s.substring(pos,i));
+				findpart(res, list, s, i);
+				list.remove(list.size()-1);
+			}
+		}
+	}
+	
+	public static boolean checkpal(String s){	// non-DP
 		if(s.length()==0){return false;}
 		else{
 			int i=0,j=s.length()-1;
@@ -49,6 +59,24 @@ public class PalindromePartitioning {
 			}
 		}
 		return true;
+	}
+	
+	public static boolean[][] checkpal_DP(String s){	// DP, table[i][j] -> if s.sub(i,j) is pal
+		int n=s.length();
+		boolean[][] table=new boolean[n][n];
+		char[] chars=s.toCharArray();
+		for(int i=n-1;i>=0;i--){
+			for(int j=i;j<n;j++){
+				if(i==j){table[i][j]=true;}
+				else if(j-i==1){
+					table[i][j]=(chars[i]==chars[j]);
+				}
+				else{
+					table[i][j]=(chars[i]==chars[j] && table[i+1][j-1]);
+				}
+			}
+		}
+		return table;
 	}
 	
 	public static void main(String[] args) {

@@ -52,17 +52,15 @@ public class GrayCode {
 		return res;
 	}
 	
-//	public List<Integer> grayCode(int n) {
-//        List<Integer> res = new LinkedList<Integer>();
-//        for(int i = 0;i<Math.pow(2, n);i++)
-//        {
-//            int i2 = i>>1;
-//            int x = i^i2;
-//            res.add(x);
-//        }
-//        return res;
-//    }
-//	
+//	public static ArrayList<Integer> grayCode(int n) {  
+//	    int size = 1<<n; // 2^n
+//	    ArrayList<Integer> ret = new ArrayList<Integer>();  
+//	    for(int i=0; i<size; i++){  
+//	        ret.add(i^(i>>1));  
+//	    }  
+//	    return ret;  
+//	} 
+	
 	public static void main(String[] args) {
 		System.out.println(grayCode(3));
 	}

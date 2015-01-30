@@ -1,4 +1,4 @@
-//Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+//Merge k sorted linked lists and return it as one sorted list.
 
 /**
  * Definition for singly-linked list.
@@ -12,10 +12,24 @@
  * }
  */
 
-import java.util.*;
+public class MergekSortedLists {
 
-public class MergeTwoSortedLists {
-
+	public ListNode mergeKLists(List<ListNode> lists) {
+		if(lists.size()==0){return null;}
+		return mergeKLists(lists,0,lists.size()-1);
+    }
+	
+	public ListNode mergeKLists(List<ListNode> lists, int a, int b) {
+		if(a==b){return lists.get(a);}
+		if(a==b-1){
+			return mergeTwoLists(lists.get(a),lists.get(b));
+		}
+		int mid=(a+b)/2;
+		ListNode tmp1= mergeKLists(lists, a, mid);
+		ListNode tmp2= mergeKLists(lists, mid+1, b);
+		return mergeTwoLists(tmp1,tmp2);
+    }
+	
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 		if(l1==null){return l2;}
         if(l2==null){return l1;}
@@ -42,7 +56,6 @@ public class MergeTwoSortedLists {
     }
 	
 	public static void main(String[] args) {
-
+		
 	}
-
 }

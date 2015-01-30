@@ -3,44 +3,36 @@
 
 public class StrStr {
 
-//	public static String strStr(String haystack, String needle) { // return the substring
-//		String myreturn=null;
-//		if(haystack!=null && needle!=null && needle.length()<=haystack.length()){
-//			if(needle.length()==0){
-//				myreturn=haystack;
-//			}
-//			else{
-//				for (int i=0;i<haystack.length()-needle.length()+1;i++){
-//					if (haystack.substring(i,i+needle.length()).equals(needle)){
-//						myreturn=haystack.substring(i,i+needle.length());
-//						break;
-//					}
-//				}
-//			}
-//		}
-//		return myreturn;
-//    }
+	public static int strStr(String haystack, String needle) { // return index
+		if(haystack==null || needle==null){return -1;}
+		int i,j;
+		for(i=0;i<haystack.length()-needle.length()+1;i++){
+			for(j=0;j<needle.length();j++){
+				if(haystack.charAt(i+j)!=needle.charAt(j)){
+					break;
+				}
+			}
+			if(j==needle.length()){
+				return i;
+			}
+		}
+		return -1;
+	}
 	
-//	public static int strStr(String haystack, String needle) { // return the index
-//		int res=-1;
-//		if(haystack!=null && needle!=null && needle.length()<=haystack.length()){
-//			if(needle.length()==0){
-//				res=0;
-//			}
-//			else{
-//				for (int i=0;i<haystack.length()-needle.length()+1;i++){
-//					if (haystack.substring(i,i+needle.length()).equals(needle)){
-//						res=i;
-//						break;
-//					}
-//				}
-//			}
-//		}
-//		return res;
-//    }
-	
-	public static int strStr(String haystack, String needle) {	// KMP
-		
+	public static String strStr(String haystack, String needle) { // return substring
+		if(haystack==null || needle==null){return null;}
+		int i,j;
+		for(i=0;i<haystack.length()-needle.length()+1;i++){
+			for(j=0;j<needle.length();j++){
+				if(haystack.charAt(i+j)!=needle.charAt(j)){
+					break;
+				}
+			}
+			if(j==needle.length()){
+				return haystack.substring(i);
+			}
+		}
+		return null;
 	}
 	
 	public static void main(String[] args) {

@@ -2,39 +2,21 @@
 
 public class Pow {
 	
-	public static double pow(double x, int n) { // Newton
-		double myreturn;
-		if(n==0){
-			myreturn=1;
+	public static double pow(double x, int n) { // binary search 
+		double res;
+		if(n==0){return 1;}
+		if(n<0){
+			n=-n;
+			x=1/x;
+		}
+		if(n==1){res=x;}
+		if(n%2==0){
+			res=pow(x*x,n/2);
 		}
 		else{
-			if(n<0){
-				n=-n;
-				x=1/x;
-			}
-			if(n==1){
-				myreturn=x;
-			}
-			else{
-				if(n==-1){
-					myreturn=1/x;
-				}
-				else{
-					if(n==2){
-						myreturn=x*x;
-					}
-					else{
-						if(n%2==0){
-							myreturn=pow(x*x,(int)(n/2));
-						}
-						else{
-							myreturn=x*pow(x,n-1);
-						}
-					}
-				}
-			}
+			res=x*pow(x,n-1);
 		}
-        return myreturn;
+        return res;
     }
 	
 	public static void main(String[] args) {
