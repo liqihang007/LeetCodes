@@ -27,30 +27,25 @@ public class InsertionSortList {
 		
 	public static ListNode insertionSortList(ListNode head) {
         if(head==null || head.next==null){return head;}
-        ListNode p1 = head, p2=head,p3=p1.next;
+        ListNode Dummy=new ListNode(Integer.MIN_VALUE);
+        Dummy.next=head;
+        ListNode p1 = Dummy, p2,p3=p1.next;
         while(p1.next!=null){
-        	p2 = head;
+        	p2 = Dummy;
         	p3 = p1.next;
         	if(p3.val>=p1.val){
         		p1=p1.next;
         	}
         	else{
-        		if(head.val>=p3.val){ // add to head
-        			p1.next=p3.next;
-        			p3.next=head;
-        			head=p3;
-        		}
-        		else{
-        			while(p2.next.val<p3.val){ // insert p3
-        				p2=p2.next;
-        			}
-        			p1.next=p3.next;
-        			p3.next=p2.next;
-        			p2.next=p3;
-        		}
+    			while(p2.next.val<p3.val){ // insert p3
+    				p2=p2.next;
+    			}
+    			p1.next=p3.next;
+    			p3.next=p2.next;
+    			p2.next=p3;
         	}
         }
-        return head;
+        return Dummy.next;
     }
 
 	public static void main(String[] args) {

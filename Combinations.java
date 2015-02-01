@@ -16,27 +16,22 @@ public class Combinations {
 
 	public static List<List<Integer>> combine(int n, int k) {
 		List<List<Integer>>res = new ArrayList<List<Integer>>();
-		if(k>=1){
-        	for(int i=1;i<=n;i++){
-        		List<Integer> temp = new ArrayList<Integer>();
-        		temp.add(i);
-        		res.add(temp);
-        	}
-        	for(int j=2;j<=k;j++){
-        		List<List<Integer>>res2 = new ArrayList<List<Integer>>();
-        		for(int i=0;i<res.size();i++){        			
-        			int begin=res.get(i).get(res.get(i).size()-1)+1;
-        			for(int p=begin;p<=n;p++){
-        				List<Integer> temp=new ArrayList<Integer>(res.get(i));
-        				temp.add(p);
-        				res2.add(temp);
-        			}
-        		}
-        		res=res2;
-        	}
-        }
+		if(n==0 || k==0 || n<k){return res;}
+		check(res, new ArrayList<Integer>(),n,k,1);
 		return res;
     }
+	
+	public static void check(List<List<Integer>>res, List<Integer>list, int n, int k, int pos){
+		if(list.size()==k){
+			res.add(list);
+			return;
+		}
+		for(int i=pos;i<=n;i++){
+			list.add(i);
+			check(res,list,n,k,pos+1);
+			list.remove(list.size()-1);
+		}
+	}
 	
 	public static void main(String[] args) {
 		System.out.println(combine(5,3));

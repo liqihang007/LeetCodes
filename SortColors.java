@@ -19,7 +19,7 @@ public class SortColors {
         for(i=0;i<A.length;i++){
         	if(A[i]!=0) break;
         }
-        System.out.println(Arrays.toString(A));
+//        System.out.println(Arrays.toString(A));
         j=A.length-1;
         while(i<j){
         	if(A[i]==1){i++;}

@@ -37,24 +37,25 @@ import java.util.*;
 public class PopulatingNextRightPointersinEachNode {
 
 	public void connect(TreeLinkNode root) {
-        if(root!= null && root.left!=null && root.right!=null){
-        	link(root.left,root.right);
-        	connect(root.left);
-            connect(root.right);
-        }
-        else{
-        	return;
-        }
+		TreeLinkNode DummyNode=new TreeLinkNode(0);
+		DummyNode.left=root;
+		link(DummyNode, root);
     }
 	
-	public void link(TreeLinkNode node1, TreeLinkNode node2){
-		if(node1!=null && node2!=null){
-			node1.next=node2;
-			link(node1.right,node2.left);
-		}
-		else{
+	public void link(TreeLinkNode father, TreeLinkNode child){
+		if(child==null){
 			return;
 		}
+		if(child==father.left){
+			child.next=father.right;
+		}
+		if(child==father.right){
+			if(father.next!=null){
+				child.next=father.next.left;
+			}
+		}
+		link(child,child.left);
+		link(child,child.right);
 	}
 	
 	public static void main(String[] args) {
