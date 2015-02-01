@@ -8,25 +8,27 @@ public class AllSortAlgorithms {
 	public static int[] quicksort(int[]A, int p, int q){
 		if(p<q){
 			int m=partition(A,p,q);
-			A=quicksort(A,0,m-1);
-			A=quicksort(A,m+1,q);
+			quicksort(A,0,m-1);
+			quicksort(A,m,q);
 		}
 		return A;
 	}
-	public static int partition(int[]A, int p, int q){
-		int i=p-1, temp;
-		for (int j=p;j<=q-1;j++){
-			if(A[j]<=A[q]){
-				i++;
-				temp=A[j];	// swap A[i+1] and A[j]
-				A[j]=A[i];
-				A[i]=temp;
-			}
-		}
-		temp=A[q];
-		A[q]=A[i+1];
-		A[i+1]=temp;
-		return i+1;
+	public static int partition(int[]arr, int i, int j){
+	    int pivot = arr[(i + j) / 2];   
+	    while (i <= j) {
+	    	while (arr[i] < pivot)
+	            i++;
+	        while (arr[j] > pivot)
+	            j--;
+	        if (i <= j) {
+	        	int tmp = arr[i];
+	        	arr[i] = arr[j];
+	        	arr[j] = tmp;
+	        	i++;
+	        	j--;
+	        }
+	    } 
+	    return i;
 	}
 
 //	Merge Sort: O(n*logn)
@@ -53,13 +55,13 @@ public class AllSortAlgorithms {
 //	Heap Sort: O(n*logn)
 	
 	public static void main(String[] args) {
-		int[]A=new int[100];
+		int[]A=new int[20];
 		for(int i=0;i<A.length;i++){
 			A[i]=(int)((Math.random()*Math.random()+Math.random())*10);
 		} 
-		System.out.println(Arrays.toString(A));
-		System.out.println(Arrays.toString(quicksort(A,0,A.length-1)));
-		System.out.println(Arrays.toString(insertionsort(A)));
+		System.out.println(Arrays.toString(A)+" ori A");
+		System.out.println(Arrays.toString(quicksort(A,0,A.length-1))+" quicksort");
+		System.out.println(Arrays.toString(insertionsort(A))+" insertion");
 	}
 
 }

@@ -26,41 +26,51 @@ public class SwapNodesinPairs {
 	}
 	
 	public ListNode swapPairs(ListNode head) {
-        if(head==null || head.next==null){return head;}
-        ListNode p1=head;
-        ListNode p2=p1.next;
-        ListNode pre;
-        p1.next=p2.next;
-        p2.next=p1;
-        head=p2;
-        pre=p1;
-        if(p1.next!=null){
-        	p1=p1.next;
-        	p2=p1.next;
+        if (head == null || head.next == null) {
+            return head;
         }
-        else{
-        	return head;
-        }
-        while(p2!=null){
-        	swap(pre,p1,p2);
-        	pre=p1;
-        	p1=p1.next;
-        	if(p1==null || p1.next==null){
-        		return head;
-        	}
-        	else{
-        		p2=p1.next;
-        	}
-        }
-        return head;
+        ListNode temp = head.next;
+        head.next = swapPairs(temp.next);
+        temp.next = head;
+        return temp;
     }
 	
-	public void swap(ListNode pre, ListNode node1, ListNode node2){
-		pre.next=node2;
-		node1.next=node2.next;
-		node2.next=node1;
-		pre=node1;
-	}
+//	public ListNode swapPairs(ListNode head) {
+//        if(head==null || head.next==null){return head;}
+//        ListNode p1=head;
+//        ListNode p2=p1.next;
+//        ListNode pre;
+//        p1.next=p2.next;
+//        p2.next=p1;
+//        head=p2;
+//        pre=p1;
+//        if(p1.next!=null){
+//        	p1=p1.next;
+//        	p2=p1.next;
+//        }
+//        else{
+//        	return head;
+//        }
+//        while(p2!=null){
+//        	swap(pre,p1,p2);
+//        	pre=p1;
+//        	p1=p1.next;
+//        	if(p1==null || p1.next==null){
+//        		return head;
+//        	}
+//        	else{
+//        		p2=p1.next;
+//        	}
+//        }
+//        return head;
+//    }
+//	
+//	public void swap(ListNode pre, ListNode node1, ListNode node2){
+//		pre.next=node2;
+//		node1.next=node2.next;
+//		node2.next=node1;
+//		pre=node1;
+//	}
 	
 	public static void main(String[] args) {
 		SwapNodesinPairs test=new SwapNodesinPairs();

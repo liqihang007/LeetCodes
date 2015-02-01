@@ -12,29 +12,26 @@ import java.util.Arrays;
 public class DecodeWays {
 	
 	public static int numDecodings(String s) {	// DP
-		if(s==null || s.length()<=0 || Character.getNumericValue(s.charAt(0))==0){return 0;}
-		char[] nums = s.toCharArray();
-		if(s.length()==1){
-    		if(nums[0]==0){return 0;}
-    		return 1;
-    	}
-		int []check=new int[nums.length];
-		check[0]=1;
-		for(int i=1;i<nums.length;i++){
-			check[i]=check[i-1];
-			if(nums[i]=='0' && !(nums[i-1]=='1' || nums[i-1]=='2')){ // 00 or 30, 40 ...
-				return 0;
-			}
-			if(nums[i-1]=='1' && nums[i]!='0' && ((i+1<nums.length && nums[i+1]!='0') || i==nums.length-1)){ // 11-19, but not 110,190...
-				if(i>2){check[i]+=check[i-2];}
-				else{check[i]+=1;}
-			}
-			if(nums[i-1]=='2' && nums[i]>='1' && nums[i]<='6'){ // 21-26, but not 210,260...
-				if(i>2){check[i]+=check[i-2];}
-				else{check[i]+=1;}
-			}
-    	}
-		return check[check.length-1];
+//		Count[i] = Count[i-1] if only S[i-1] is valid
+//		Count[i] = Count[i-1] + Count[i-2] if S[i-1] and S[i-2] both valid
+		if(s==null || s.length()<=0){return 0;}
+		int n = s.length();  
+	    int[] check = new int[n+1];  
+	    check[0] = 1;  
+	    check[1] = isValid(s.substring(0,1))?  1:0;
+	    for(int i=2; i<=n;i++){  
+	        if (isValid(s.substring(i-1,i)))  
+	        	check[i] = check[i-1];  
+	        if (isValid(s.substring(i-2,i)))  
+	        	check[i] += check[i-2];  
+	    }  
+	    return check[n];  
+	}
+	
+	public static boolean isValid(String s){  
+	    if (s.charAt(0)=='0') return false;  
+	    int code = Integer.parseInt(s);  
+	    return code>=1 && code<=26;  
 	}
 
 //    public static int numDecodings(String s) {	// recursive

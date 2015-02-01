@@ -19,9 +19,6 @@ public class DistinctSubsequences {
         	if(S.charAt(0)==T.charAt(0)){
         		table[0][0]=1;
         	}
-        	else{
-        		table[0][0]=0;
-        	}
         	for (int i=1;i<n;i++){
         		if(T.charAt(0)==S.charAt(i)){
         			table[0][i]=table[0][i-1]+1;
@@ -32,12 +29,10 @@ public class DistinctSubsequences {
         	}
         	for (int i=1;i<m;i++){
         		for(int j=i;j<n;j++){
+        			table[i][j]+=table[i][j-1];
         			if(S.charAt(j)==T.charAt(i)){
-        				table[i][j]=table[i-1][j-1]+table[i][j-1];
-        			}
-        			else{
-        				table[i][j]=table[i][j-1];
-        			}
+        				table[i][j]+=table[i-1][j-1];
+        			}        			
         		}
         	}
         	return table[m-1][n-1];
@@ -46,8 +41,8 @@ public class DistinctSubsequences {
 	
 	public static void main(String[] args) 
 	{
-		String s1="acasdvvadasd";
-		String s2="aasd";
+		String s1="rabbbit";
+		String s2="rabbit";
 		System.out.println(numDistinct(s1,s2));
 		
 	}

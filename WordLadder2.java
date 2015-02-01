@@ -12,6 +12,10 @@
 //    ["hit","hot","lot","log","cog"]
 //  ]
 
+/*
+Shortest path + output
+*/
+
 import java.util.*;
 
 public class WordLadder2 {

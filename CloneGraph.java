@@ -27,69 +27,38 @@ import java.util.*;
  */
 
 public class CloneGraph {
-	private static HashMap<UndirectedGraphNode, UndirectedGraphNode> map;
 	
 	static class UndirectedGraphNode {
 	      int label;
 	      List<UndirectedGraphNode> neighbors;
-	      UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+	      UndirectedGraphNode(int x) { 
+	    	  label = x; 
+	    	  neighbors = new ArrayList<UndirectedGraphNode>(); }
 		 }
 		 
-	public static UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-        if( node==null || node.neighbors.size()==0){return node;}
-        int key=node.label;
-        UndirectedGraphNode newnode= new UndirectedGraphNode(key);
-        map=new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
-        map.put(node, newnode);
-//        dfs(node);  //	dsf
-        bfs(node);	//	bsf
+	public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if(node==null){return node;}
+        HashMap<UndirectedGraphNode, UndirectedGraphNode>map=new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
+        map.put(node, new UndirectedGraphNode(node.label));
+        LinkedList<UndirectedGraphNode> queue=new LinkedList<UndirectedGraphNode>();
+        queue.push(node);
+        while(!queue.isEmpty()){
+        	UndirectedGraphNode ori=queue.remove();
+        	UndirectedGraphNode cp=map.get(ori);
+        	for(UndirectedGraphNode n: ori.neighbors){
+        		if(!map.containsKey(n)){
+        			map.put(n, new UndirectedGraphNode(n.label));
+        			queue.add(n);
+        		}
+        		UndirectedGraphNode newnode=map.get(n);
+        		cp.neighbors.add(newnode);
+        	}
+        }
         return map.get(node);
-    }
-	
-	public static void dfs(UndirectedGraphNode node){
-		if(node==null){return;}
-		for(UndirectedGraphNode neighbor : node.neighbors){
-			if(!map.containsKey(neighbor)){
-				UndirectedGraphNode newneighbor = new UndirectedGraphNode(neighbor.label);
-				map.put(neighbor, newneighbor);
-				dfs(neighbor);
-			}
-			map.get(node).neighbors.add(map.get(neighbor));
-		}
-	}
-
-	public static void bfs(UndirectedGraphNode node){
-		if(node==null){return;}
-		ArrayList<UndirectedGraphNode> bsfset=new ArrayList<UndirectedGraphNode>();
-		for(UndirectedGraphNode neighbor : node.neighbors){
-			if(!map.containsKey(neighbor)){
-				UndirectedGraphNode newneighbor = new UndirectedGraphNode(neighbor.label);
-				map.put(neighbor, newneighbor);
-				bsfset.add(neighbor);
-			}
-			map.get(node).neighbors.add(map.get(neighbor));
-		}
-		for(UndirectedGraphNode visitednodes : bsfset){
-			bfs(visitednodes);
-		}
 	}
 	
 	public static void main(String[] args) {
-		UndirectedGraphNode n0=new UndirectedGraphNode(0);
-//		UndirectedGraphNode n1=new UndirectedGraphNode(1);
-//		UndirectedGraphNode n2=new UndirectedGraphNode(2);
-//		UndirectedGraphNode n3=new UndirectedGraphNode(3);
-//		n2.neighbors.add(n2);
-//		n1.neighbors.add(n2);
-//		n1.neighbors.add(n3);
-//		n0.neighbors.add(n1);
-//		n0.neighbors.add(n2);
-//		
-		UndirectedGraphNode node=cloneGraph(n0);
-		System.out.println("size is "+cloneGraph(n0).neighbors.size());
-		for(int i=0;i<node.neighbors.size();i++){
-			System.out.println(node.neighbors.get(i).label);
-		}
+		
 	}
 
 }

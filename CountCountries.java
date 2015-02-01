@@ -28,16 +28,12 @@ public class CountCountries {
 	public int countCountries(int[][] A){
 		if(A.length==0 || A[0].length==0){return 0;}
 		boolean [][] visited=new boolean[A.length][A[0].length];
-		for(int i=0;i<A.length;i++){
-			for(int j=0;j<A[0].length;j++){
-				visited[i][j]=false;;
-			}
-		}
 		int res=0;
 		for(int i=0;i<A.length;i++){
 			for(int j=0;j<A[0].length;j++){
 				if(!visited[i][j]){
 					res++;
+//					if(A[i][j]==1){res++;}
 					bfs(A,visited, i,j,A[i][j]);
 				}
 			}

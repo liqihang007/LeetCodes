@@ -16,7 +16,7 @@ public class BestTimetoBuyandSellStock3 {
         		if(prices[i]<minL){minL=prices[i];}
         		L[i]=Math.max(L[i-1],prices[i]-minL);
         	}
-        	System.out.println(Arrays.toString(L)+" "+minL);
+
         	int [] R=new int[prices.length];
         	R[prices.length-1]=0;
         	int maxR=prices[prices.length-1];
@@ -24,6 +24,7 @@ public class BestTimetoBuyandSellStock3 {
         		if(prices[i]>maxR){maxR=prices[i];}
         		R[i]=Math.max(R[i+1],maxR-prices[i]);
         	}
+        	
         	int res=0;
         	for(int i=0;i<prices.length-1;i++){
         		if(L[i]+R[i+1]>res){res=L[i]+R[i+1];}
