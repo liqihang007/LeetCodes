@@ -4,21 +4,17 @@
 
 import java.util.*;
 
-public class AgeofEveryPersononEarth {
-
-	public static int mostage=0;
+public class AgeofEveryPersononEarth {	// m*logn, where m is number of unique ages and n is number of elements
 	
 	public static int[] countAge(int[] input) {
 		int[] count = new int[input[input.length-1]+1];
 		bst(input, 0, input.length-1, count);
-		System.out.println(mostage);
 		return count;
 	}
 		
 	private static void bst(int[] input, int begin, int end, int[] count) {
 		if (input[begin] == input[end]) {
 			count[input[begin]] += end-begin+1;
-			mostage=Math.max(count[input[begin]], mostage);
 		}
 		else {
 			bst(input, begin, (begin+end)/2, count);
@@ -28,7 +24,7 @@ public class AgeofEveryPersononEarth {
 	
 	public static void main(String[] args) {
 		int[]A=new int[]{0,0,0,0,1,1,1,1,1,1,3,3,3,3,4,4,4,4,5,5,5,6,6,6,6,
-				7,7,7,7,8,8,8,8,8,8,8,9,9,9,9,9,12,12,16,44,44,47,88};
+				7,7,7,7,8,8,8,8,8,8,8,9,9,9,9,9,12,12,16,44,44,47,48};
 		System.out.println(Arrays.toString(countAge(A)));
 	}
 }

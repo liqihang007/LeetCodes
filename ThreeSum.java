@@ -15,7 +15,7 @@ public class ThreeSum {
 	public static ArrayList<ArrayList<Integer>> threeSum(int[] num) {
 		Set<ArrayList<Integer>> set=new HashSet<ArrayList<Integer>>();
 		Arrays.sort(num);
-		for (int i=0;i<num.length;i++){
+		for (int i=0;i<num.length-2;i++){
 			int a=i+1;
 			int b=num.length-1;
 			while(b>a){
