@@ -16,7 +16,6 @@ public class RemoveDuplicatesfromSortedArray2 {
         	return A.length;
         }
         else{
-        	Arrays.sort(A);
         	int count=1;
         	int dup=0;
         	for (int i=1;i<A.length;i++){

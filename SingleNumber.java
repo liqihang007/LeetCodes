@@ -10,7 +10,7 @@ public class SingleNumber {
         return res;
     }
 	public static void main(String[] args) {
-		int[]A=
+		
 	}
 
 }

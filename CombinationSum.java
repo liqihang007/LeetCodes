@@ -44,9 +44,9 @@ public class CombinationSum {
     }
 	
 	public static void main(String[] args) {
-//		int[] A={3,3,5,7,4,3,4};
-		int[] A={1,2};
-		System.out.println(combinationSum(A,2));
+		int[] A={2,3,5,7,4,3,4};
+//		int[] A={1,2};
+		System.out.println(combinationSum(A,10));
 	}
 
 }

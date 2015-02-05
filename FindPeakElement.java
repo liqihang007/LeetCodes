@@ -10,52 +10,21 @@ import java.util.*;
 public class FindPeakElement {
 
 	public static int findPeakElement(int[] num) {
-        int myreturn=0;
-        if (num.length>1){
-        	myreturn=finddiff(num,0,num.length-1);
+        if (num==null || num.length==0) return 0;
+        int i=0, j=num.length-1;
+        while(i<j-1){
+        	int mid=(i + j)/2;
+        	if(num[mid]>num[mid-1] && num[mid]>num[mid+1])
+        		return mid;
+        	if(num[mid]>num[mid+1])
+        		j=mid+1;
+        	if(num[mid]<num[mid+1])
+        		i=mid;
         }
-        return myreturn;
-    }
-	
-	public static int finddiff(int[] num, int x, int y){
-		if(x>=y){
-			return x;
-		}
-		if(x==y-1){
-			if(num[x]>num[y]){
-        		return x;
-        	}
-        	else{
-        		return y;
-        	}
-		}
-		else{
-			int mid=(int)((int)(x+y)*0.5);
-			int left=finddiff(num, x, mid);
-			int right=finddiff(num, mid+1, y);
-			if (num[left]>num[right]){
-				return left;
-			}
-			else{
-				return right;
-			}
-		}
+        return -1;
 	}
-	
-//	public int findPeakElement(int[] num) {
-//        for (int i = 0, j = num.length - 1, mid = j / 2; i < j; mid = (i + j) / 2) {
-//            if (mid == i) { 
-//					return num[mid] > num[j] ? mid : j; 
-//				}
-//            i = num[mid] < num[mid + 1] ? mid : i;
-//            j = num[mid] > num[mid + 1] ? mid : j;
-//        }
-//        return 0;
-//    }
 	
 	public static void main(String[] args) {
-		System.out.println(findPeakElement(new int[]{1,2,1,1,1,1,2}));
-
+		System.out.println(findPeakElement(new int[]{1,5,4,5,6,7,8,6}));
 	}
-
 }

@@ -15,9 +15,7 @@ public class MaximumSubarray {
         		if(A[i]>temp){ // temp is negative
         			temp=A[i];
         		}
-        		if(temp>sum){
-        			sum=temp;
-        		}
+                sum=Math.max(temp,sum);
         	}
         }
         return sum;

@@ -30,7 +30,7 @@ public class PrintaBinaryTreeinVerticalOrder {
 	    }
 	}
 	
-	public static List<List<Integer>> rintaBinaryTreeinVerticalOrder(Node root){
+	public static List<List<Integer>> printaBinaryTreeinVerticalOrder(Node root){
 		List<List<Integer>>res=new ArrayList<List<Integer>>();
 		if(root==null){return res;}
 		int[] range=new int[2];

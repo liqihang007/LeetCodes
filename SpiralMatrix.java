@@ -6,72 +6,96 @@
 // [ 4, 5, 6 ],
 // [ 7, 8, 9 ]
 //]
+//return [1,2,3,4,5,6,7,8,9]
 
 import java.util.*;
 
 public class SpiralMatrix {
 
-	public static List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> myreturn=new ArrayList<Integer>();
-        HashSet<Integer> used=new HashSet<Integer>();
-        if(matrix==null || matrix.length==0 || matrix[0].length==0){
-        	return myreturn;
+    public static ArrayList<Integer> spiralOrder(int[][] matrix) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(matrix == null || matrix.length == 0)
+            return res;
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int count=0;
+        while(count*2<rows && count*2<cols){
+            for(int i=count; i<cols-count; i++)
+                res.add(matrix[count][i]);
+            for(int i=count+1; i<rows-count; i++)
+                res.add(matrix[i][cols-count-1]);
+            if(rows-2*count==1 || cols-2*count==1)  // if only one row/col remains
+                break;
+            for(int i=cols-count-2; i>=count; i--)
+                res.add(matrix[rows-count-1][i]);
+            for(int i=rows-count-2; i>=count+1; i--)
+                res.add(matrix[i][count]);
+            count++;
         }
-        int i=0,j=0;
-        boolean check=true;
-        int dic=1;
-        while(check){
-        	if(dic>4){dic=1;}
-        	if (used.contains(i*matrix[0].length+j) || j<0 || j>matrix[0].length-1
-        			|| i<0 || i>matrix.length-1){
-        		check=false;
-        		break;
-        	}
-        	else{
-	        	used.add(i*matrix[0].length+j);
-	    		myreturn.add(matrix[i][j]);
-	    		if(dic==1){
-	    			j++;
-	    			if(used.contains(i*matrix[0].length+j) || j>matrix[0].length-1){
-	    				j--;i++;
-	    				dic++;
-	    			}
-	    		}
-	    		else{
-	    			if(dic==2){
-	        			i++;
-	        			if(used.contains(i*matrix[0].length+j) || i>matrix.length-1){
-	        				i--;j--;
-	        				dic++;
-	        			}
-	        		}
-	    			else{
-	    				if(dic==3){
-	            			j--;
-	            			if(used.contains(i*matrix[0].length+j) || j<0){
-	            				j++;i--;
-	            				dic++;
-	            			}
-	            		}
-	    				else{
-                			i--;
-                			if(used.contains(i*matrix[0].length+j) || i<0){
-                				i++;j++;
-                				dic++;
-                			}
-                		}
-	    			}
-        		}
-        	}
-        }
-        return myreturn;
+        return res;
     }
+    
+//	public static List<Integer> spiralOrder(int[][] matrix) {
+//        List<Integer> myreturn=new ArrayList<Integer>();
+//        HashSet<Integer> used=new HashSet<Integer>();
+//        if(matrix==null || matrix.length==0 || matrix[0].length==0){
+//        	return myreturn;
+//        }
+//        int i=0,j=0;
+//        boolean check=true;
+//        int dic=1;
+//        while(check){
+//        	if(dic>4){dic=1;}
+//        	if (used.contains(i*matrix[0].length+j) || j<0 || j>matrix[0].length-1
+//        			|| i<0 || i>matrix.length-1){
+//        		check=false;
+//        		break;
+//        	}
+//        	else{
+//	        	used.add(i*matrix[0].length+j);
+//	    		myreturn.add(matrix[i][j]);
+//	    		if(dic==1){
+//	    			j++;
+//	    			if(used.contains(i*matrix[0].length+j) || j>matrix[0].length-1){
+//	    				j--;i++;
+//	    				dic++;
+//	    			}
+//	    		}
+//	    		else{
+//	    			if(dic==2){
+//	        			i++;
+//	        			if(used.contains(i*matrix[0].length+j) || i>matrix.length-1){
+//	        				i--;j--;
+//	        				dic++;
+//	        			}
+//	        		}
+//	    			else{
+//	    				if(dic==3){
+//	            			j--;
+//	            			if(used.contains(i*matrix[0].length+j) || j<0){
+//	            				j++;i--;
+//	            				dic++;
+//	            			}
+//	            		}
+//	    				else{
+//                			i--;
+//                			if(used.contains(i*matrix[0].length+j) || i<0){
+//                				i++;j++;
+//                				dic++;
+//                			}
+//                		}
+//	    			}
+//        		}
+//        	}
+//        }
+//        return myreturn;
+//    }
 
 	public static void main(String[] args) {
-//		int [][] A= new int[][]{{1,2,3},{4,5,6},{7,8,9}};
+		int [][] A= new int[][]{{1,2,3},{4,5,6},{7,8,9},{10,11,12}};
 //		int [][] A= new int[][]{{1,2,3}};
 //		int [][] A= new int[][]{{1},{2},{3}};
-		int [][] A=null;
+//		int [][] A=null;
 
 		for(int i=0;i<A.length;i++){
 			System.out.println(Arrays.toString(A[i]));

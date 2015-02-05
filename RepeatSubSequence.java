@@ -12,10 +12,6 @@ public class RepeatSubSequence {
 		if(s==null || s.length()<=1){return 0;}
 		int n=s.length();
 		int [][]table=new int[n+1][n+1];
-		for(int i=0;i<=n;i++){
-			table[i][0]=0;
-			table[0][i]=0;
-		}
 		for(int i=1;i<=n;i++){
 			for(int j=1;j<=n;j++){
 				if(i!=j && s.charAt(i-1)==s.charAt(j-1)){

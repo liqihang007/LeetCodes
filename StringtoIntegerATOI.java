@@ -34,21 +34,15 @@ public class StringtoIntegerATOI {
         try{
 	        for(int i=0;i<str.length();i++){
 	        	char d = str.charAt(i);
-//	        	if(d==' '){continue;}
-	        	if(!Character.isDigit(d)){return 0;}
-	        	else{
-	        		if(sign==-1){
-	        			res=(int) (res-(int)(d-'0')*Math.pow(10,str.length()-i-1));
-	        		}
-	        		else{
-	        			res=(int) (res+(int)(d-'0')*Math.pow(10,str.length()-i-1));
-	        		}
-	        		System.out.println(d);
-	        	}
-	        }
+                if(sign==-1){
+                    res=(int) (res-(int)(d-'0')*Math.pow(10,str.length()-i-1));
+                }
+                else{
+                    res=(int) (res+(int)(d-'0')*Math.pow(10,str.length()-i-1));
+                }
+            }
 	        return res;
         }catch (Exception e){
-        	System.out.println(e);
         	if (sign==-1) {return Integer.MIN_VALUE;}
         	if (sign==1) {return Integer.MAX_VALUE;}
         	else {return 0;}

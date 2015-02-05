@@ -18,11 +18,6 @@ public class TwoSum {
 			if (hash.containsKey(key)){
 				int x=hash.get(key)+1;
 				int y=i+1;
-				if (x>y){
-					int temp=x;
-					x=y;
-					y=temp;
-				}
 				results[0]=x;
 				results[1]=y;
 				return results;

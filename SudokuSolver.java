@@ -11,17 +11,6 @@ public class SudokuSolver {
 		boolean [][] rows=new boolean[9][9];
 		boolean [][] cols=new boolean[9][9];
 		boolean [][][] blocks=new boolean[9][3][3];
-		for(int i=0;i<9;i++){
-			for(int j=0;j<9;j++){
-				rows[i][j]=false;
-				cols[i][j]=false;
-			}
-			for(int j=0;j<3;j++){
-				for(int p=0;p<3;p++){
-					blocks[i][j][p]=false;
-				}
-			}
-		}
 		for(int i=0;i<9;i++){	// pre-process
 			for(int j=0;j<9;j++){
 				if(board[i][j]!='.'){

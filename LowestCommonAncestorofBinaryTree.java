@@ -31,10 +31,10 @@ public class LowestCommonAncestorofBinaryTree {
 	    } else if (root == q) {
 	        return q;
 	    }
-	    if (commonAncestor(root.left, p, q) == null) {
-	        return commonAncestor(root.right, p, q);
-	    } else if (commonAncestor(root.right, p, q) == null) {
-	        return commonAncestor(root.left, p, q);
+	    if (LCA_I(root.left, p, q) == null) {
+	        return LCA_I(root.right, p, q);
+	    } else if (LCA_I(root.right, p, q) == null) {
+	        return LCA_I(root.left, p, q);
 	    } else {
 	        return root;
 	    }

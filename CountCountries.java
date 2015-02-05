@@ -1,4 +1,4 @@
-//2D matrix with 0s and 1s. Try to find out how many countries in this matrix? 
+ //2D matrix with 0s and 1s. Try to find out how many countries in this matrix?
 //For example: 
 //[[1,1,1,0] 
 //[1,1,0,0] 

@@ -18,9 +18,7 @@ public class ThreeSumClosest {
         	while (p<q){
 				int sum=num[i]+num[p]+num[q];
 		    	if (sum==target){
-		    		result=sum;
-		    		mymin=0;
-		    		break;
+                    return 0;
 		    	}
 		    	if (sum>target){
 		    		if (sum-target<mymin){

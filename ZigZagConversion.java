@@ -19,7 +19,6 @@ public class ZigZagConversion {
         		if(i==0 || i==nRows-1){
         			while(j<s.length()){
             			A[k]=s.charAt(j);
-//            			System.out.println(A[k]+" "+k);
             			j=j+2*(nRows-1);
             			k++;
         			}
@@ -28,7 +27,6 @@ public class ZigZagConversion {
 	        		boolean q=true;
 	        		while(j<s.length()){
 	        			A[k]=s.charAt(j);
-//	        			System.out.println(A[k]);
 	    				if(q){j=j+2*(nRows-1-i);q=false;}
 	    				else{j=j+2*(i);q=true;}
 	        			k++;

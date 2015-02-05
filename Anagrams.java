@@ -12,7 +12,7 @@ public class Anagrams {
         	String s=strs[i];
         	char[] chars = s.toCharArray();
         	Arrays.sort(chars);
-        	s = String.valueOf(chars);
+        	s = new String(chars);
         	if(hash.containsKey(s)){
         		hash.get(s).add(i);
         	}

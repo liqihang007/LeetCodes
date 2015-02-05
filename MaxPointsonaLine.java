@@ -58,10 +58,7 @@ public class MaxPointsonaLine {
 	                    checked[c] = true;
 	                }
 	            }
-
-	            if (count > max) {
-	                max = count;
-	            }
+                max=Math.max(count,max);
 	        }
 	    }
 	    return max;

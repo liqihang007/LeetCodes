@@ -9,6 +9,7 @@ public class SingleNumber3 {
         for(int i : A){
         	res^=A[i];
         }
+//        res=res^A[i];b3=b2&i;b2=(b2|(b1&i))&~b3;b1=(b1|i)&~bit3;
         String bistr=Integer.toBinaryString(res);
         List<Integer>list1=new ArrayList<Integer>();
         List<Integer>list2=new ArrayList<Integer>();
@@ -26,8 +27,6 @@ public class SingleNumber3 {
         		break;
         	}
         }
-        System.out.println(list1);
-        System.out.println(list2);
         int res1=0;
         for(int i : list1){
         	res1^=i;
