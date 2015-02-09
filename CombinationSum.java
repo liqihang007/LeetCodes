@@ -14,21 +14,19 @@ import java.util.*;
 public class CombinationSum {
 
 	public static List<List<Integer>> combinationSum(int[] candidates, int target) {
-		List<List<Integer>> result= new ArrayList<>();
-		if (candidates!=null && candidates.length>0){
-			Arrays.sort(candidates);
-			ArrayList<Integer> templist = new ArrayList<Integer>();
-			findcomb(result,0,candidates,target, templist);
-		}
-		return result;
+		List<List<Integer>> res= new ArrayList<>();
+		if (candidates==null || candidates.length==0) return res;
+		Arrays.sort(candidates);
+		findcomb(res, 0, candidates, target, new ArrayList<Integer>());
+		return res;
     }
 	
-	public static void findcomb(List<List<Integer>> result, int i, int[] candidates, int target, ArrayList<Integer> templist){
+	public static void findcomb(List<List<Integer>> res, int i, int[] candidates, int target, ArrayList<Integer> templist){
 		if(target<0){
 			return;
 		}
 		if(target==0){
-			result.add(new ArrayList<Integer>(templist));
+			res.add(new ArrayList<Integer>(templist));
 			return;
 		}
 		if(target>0){
@@ -37,7 +35,7 @@ public class CombinationSum {
 					continue;
 				}
 				templist.add(candidates[j]);
-				findcomb(result,j,candidates,target-candidates[j], templist);
+				findcomb(res,j,candidates,target-candidates[j], templist);
 				templist.remove(templist.size()-1);
 			}
 		}

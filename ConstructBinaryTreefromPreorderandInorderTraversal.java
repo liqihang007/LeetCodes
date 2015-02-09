@@ -14,42 +14,36 @@ import java.util.*;
 
 public class ConstructBinaryTreefromPreorderandInorderTraversal {
 
-//	public static TreeNode buildTree(int[] preorder, int[] inorder) {
-//		TreeNode root=null;
-//		if(preorder!=null && inorder!=null && preorder.length==inorder.length){
-//			if(preorder.length==1 && preorder[0]==inorder[0]){
-//				root=TreeNode(preorder[0]);
-//			}
-//			else{
-//				int n = preorder.length;
-//				root=constructtree(root, preorder, inorder);
-//			}
-//		}
-//		
-//		return root;
-//    }
-//	
-//	public static TreeNode constructtree(TreeNode node, int[] preorder, int[] inorder){
-//		if(preorder.length==0 || inorder.length==0){
-//			return null;
-//		}
-//		if(preorder.length==1 || inorder.length==1){
-//			return TreeNode(preorder[0]);
-//		}
-//		else{
-//			int marker=0;
-//			for (int i=0;i<preorder.length;i++){
-//				if(inorder[i]==preorder[0]){
-//					marker=i;
-//					break;
-//				}
-//			}
-//			node.left=
-//		}
-//	}
+	static class TreeNode {
+		int val;
+	    TreeNode left;
+	    TreeNode right;
+	    TreeNode(int x) { val = x; }
+	}
+	
+	public int findpos(int[] A, int start, int end, int tar){
+		for(int i=start;i<=end;i++){
+			if(A[i]==tar)
+				return i;
+		}
+		return -1;
+	}
+	
+	public TreeNode buildtree(int[] preorder, int prestart, int preend, int[] inorder, int instart, int inend){
+		if(instart>inend) return null;
+		TreeNode root = new TreeNode(preorder[prestart]);
+		int pos = findpos(inorder, instart, inend, preorder[prestart]);
+		root.left=buildtree(preorder, prestart+1, prestart+(pos-instart), inorder, instart, pos-1);//pos-instart is the nodes' size at left
+		root.right=buildtree(preorder, preend-(inend-pos)+1, preend, inorder, pos+1, inend);//inend-pos is the nodes' size on right
+		return root;
+	}
+	
+	public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if(preorder.length!=inorder.length) return null;
+        return buildtree(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
+    }
 	
 	public static void main(String[] args) {
-		int[]A=new int[]{1,2,3};
-		Arrays.copyOfRange(A,10,11);
+		
 	}
 }

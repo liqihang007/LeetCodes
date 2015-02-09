@@ -10,11 +10,11 @@ public class WordBreak {
 
 	public boolean wordBreak(String s, Set<String> dict) {
         boolean [] check = new boolean[s.length()+1];
-        Arrays.fill(check, false);
         check[0]=true;
+        int maxLength = getMaxLength(dict);
         for(int i=1;i<=s.length();i++){
-        	for(int j=i-1;j>=0;j--){
-        		if(check[j]==true && dict.contains(s.substring(j,i))){
+        	for(int j=i-1;j>=0 && j>=i-maxLength;j--){
+        		if(check[j] && dict.contains(s.substring(j,i))){
         			check[i]=true;
         			break;
         		}
@@ -23,6 +23,13 @@ public class WordBreak {
         return check[s.length()];
     }
 
+	public int getMaxLength(Set<String> dict) {
+        int maxLength = 0;
+        for (String word : dict)
+            maxLength = Math.max(maxLength, word.length());
+        return maxLength;
+    }
+	
 	public static void main(String[] args) {
 		
 	}
