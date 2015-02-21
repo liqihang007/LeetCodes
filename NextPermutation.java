@@ -29,7 +29,6 @@ public class NextPermutation {
 					if(num[k]>num[j] && num[k]-num[j]<diff){
 						diff=num[k]-num[j];
 						which=k;
-						System.out.println(diff+" "+which);
 					}
 				}
 				int temp=num[which];

@@ -38,6 +38,15 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
 		return -1;
 	}
 	
+//    public TreeNode buildtree(int[] preorder, int prestart, int preend, int[] inorder, int instart, int inend){
+//        if(instart>inend) return null;
+//        TreeNode root = new TreeNode(preorder[prestart]);
+//        int pos = findpos(inorder, instart, inend, preorder[prestart]);
+//        root.left=buildtree(preorder, prestart+1, prestart+(pos-instart), inorder, instart, pos-1);//pos-instart is the nodes' size at left
+//        root.right=buildtree(preorder, preend-(inend-pos)+1, preend, inorder, pos+1, inend);//inend-pos is the nodes' size on right
+//        return root;
+//    }
+    
 	public TreeNode buildtree(int[] inorder, int instart, int inend, int[] postorder, int poststart, int postend){
 		if(instart>inend) return null;
 		TreeNode root = new TreeNode(postorder[postend]);

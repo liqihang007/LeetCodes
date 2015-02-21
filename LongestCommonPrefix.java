@@ -14,12 +14,10 @@ public class LongestCommonPrefix {
         			whichmin=i;
         		}
         	}
-//        	System.out.println(minsize+" "+whichmin);
         	int res=0;
         	for(int i=0;i<minsize;i++){
         		for(int j=0;j<strs.length-1;j++){
         			if(strs[j].charAt(i) != strs[j+1].charAt(i)){
-//        				System.out.println(strs[j].charAt(i)+" "+strs[j+1].charAt(i));
         				return strs[whichmin].substring(0,res);
         			}
         		}

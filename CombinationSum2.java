@@ -24,10 +24,10 @@ public class CombinationSum2 {
     }
 	
 	public static void findcomb(List<List<Integer>> res, int k, int[] num, int target, ArrayList<Integer> mylist){
-		if (target<0 || num.length<=0){
+		if (target<0){
 			return;
 		}
-		if (target==0 && num.length>=0){
+		if (target==0){
 			res.add(new ArrayList<Integer>(mylist));
 			return;
 		}

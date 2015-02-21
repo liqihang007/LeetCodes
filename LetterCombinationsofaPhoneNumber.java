@@ -14,10 +14,10 @@ public class LetterCombinationsofaPhoneNumber {
 			res.add("");
 			return res;
 		}
-		List<String> res = new ArrayList<String>(getletter(digits.charAt(0)));
+		List<String> res = getletter(digits.charAt(0));
 		for(int i=1;i<digits.length();i++){
 			List<String> temp = new ArrayList<String>();
-			List<String> num = new ArrayList<String>(getletter(digits.charAt(i)));
+			List<String> num = getletter(digits.charAt(i));
 			for(int p=0;p<res.size();p++){
 				String s=res.get(p);
 				for(int q=0;q<num.size();q++){

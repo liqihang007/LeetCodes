@@ -13,28 +13,21 @@ public class LongestSubstringWithoutRepeatingCharacters {
         int begin=0,end=0,res=0;
         for(int i=0;i<s.length();i++){
         	if(hash.containsKey(s.charAt(i))){
-//        		System.out.println(s.substring(begin,i));
-        		if(i-begin>res){
-        			res=i-begin;
-        			
-        		}
-        		begin=Math.max(begin, hash.get(s.charAt(i))+1);
+                res=Math.max(res,i-begin);
+                begin=Math.max(begin, hash.get(s.charAt(i))+1);
         		hash.put(s.charAt(i), i);
         	}
         	else{
         		hash.put(s.charAt(i), i);
         	}
         }
-        if(s.length()-begin>res){
-        	res=s.length()-begin;
-//        	System.out.println(s.substring(begin,s.length()));
-        }
+        res=Math.max(res,s.length()-begin);
         return res;
     }
 	
 	public static void main(String[] args) {
 //		System.out.println(lengthOfLongestSubstring("ababcdabcbb"));
 //		System.out.println(lengthOfLongestSubstring("bbbbb"));
-		System.out.println(lengthOfLongestSubstring("ctclemwwlexnkvwizzoyctqlnzxoetyioavsorrbvoqflpqlqgluzdgoefckaatpdohtgaxdqnlceb"));
+        System.out.println(lengthOfLongestSubstring("ctclemwwlexnkvwizzoyctqlnzxoetyioavsorrbvoqflpqlqgluzdgoefckaatpdohtgaxdqnlceb"));
 	}
 }

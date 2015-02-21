@@ -9,7 +9,7 @@ public class BackPack2 {
         int n=A.length;
         int[]dp=new int[m+1];
         for(int i=0;i<n;i++){
-	        for(int j=m;j>=A[i];j++){
+	        for(int j=m;j>=A[i];j--){
 	        	dp[j]=Math.max(dp[j-A[i]]+V[i],dp[j]);
 	        }
         }

@@ -1,4 +1,5 @@
-//There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+//There are two sorted arrays A and B of size m and n respectively.
+//Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
 
 import java.util.*;
 
@@ -17,7 +18,8 @@ public class MedianofTwoSortedArrays {
 	public static int findk(int[] A, int[] B, int k){
 		int n=A.length-1, m=B.length-1;
 //		System.out.println(Arrays.toString(A)+" - "+Arrays.toString(B)+" - "+k);
-		if(k<=1 && n>=0 && m>=0){return Math.min(A[0],B[0]);}
+		if(k<=1 && n>=0 && m>=0)
+            return Math.min(A[0],B[0]);
 		if(n<0){
 			if(k<1){k++;}
 			return B[k-1];

@@ -23,13 +23,16 @@ public class SearchforaRange {
 		int in=-1;
 		if(i<=j){
 			if(i==j){
-				if(A[i]==tar){in=i;}
+				if(A[i]==tar)
+                    in=i;
 			}
 			else{
 				if(i==j-1){
-					if(A[i]==tar){in= i;}
+					if(A[i]==tar)
+                        in= i;
 					else{
-						if(A[j]==tar){in=j;}
+						if(A[j]==tar)
+                            in=j;
 					}
 				}
 				else{
@@ -50,14 +53,17 @@ public class SearchforaRange {
 		int in=-1;
 		if(i<=j){
 			if(i==j){
-				if(A[i]==tar){in= i;}
+				if(A[i]==tar)
+                    in= i;
 			}
 			else{
 				if(i==j-1){
-					if(A[j]==tar){in= j;}
+					if(A[j]==tar)
+                        in= j;
 					else{
-						if(A[i]==tar){in= i;}
-						}
+						if(A[i]==tar)
+                            in= i;
+                    }
 				}
 				else{
 					int mid=(int)(i+j)/2;

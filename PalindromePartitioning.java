@@ -20,7 +20,7 @@ public class PalindromePartitioning {
 		return res;
     }
 	
-	public static void findpart_DP(List<List<String>> res, ArrayList<String> list,
+	public static void findpart_DP(List<List<String>> res, ArrayList<String> list, // DP
 			String s, int pos, boolean[][]table){
 		if(pos>=s.length()){
 			res.add(new ArrayList<String>(list));
@@ -34,8 +34,27 @@ public class PalindromePartitioning {
 			}
 		}
 	}
+    
+    public static boolean[][] checkpal_DP(String s){	// DP table[i][j] -> if s.sub(i,j) is pal
+        int n=s.length();
+        boolean[][] table=new boolean[n][n];
+        char[] chars=s.toCharArray();
+        for(int i=n-1;i>=0;i--){
+            for(int j=i;j<n;j++){
+                if(i==j){table[i][j]=true;}
+                else if(j-i==1){
+                    table[i][j]=(chars[i]==chars[j]);
+                }
+                else{
+                    table[i][j]=(chars[i]==chars[j] && table[i+1][j-1]);
+                }
+            }
+        }
+        return table;
+    }
 	
-	public static void findpart(List<List<String>> res, ArrayList<String> list, String s, int pos){
+	public static void findpart(List<List<String>> res, ArrayList<String> list, // non-DP rec
+                                String s, int pos){
 		if(pos>=s.length()){
 			res.add(new ArrayList<String>(list));
 			return;
@@ -49,7 +68,7 @@ public class PalindromePartitioning {
 		}
 	}
 	
-	public static boolean checkpal(String s){	// non-DP
+	public static boolean checkpal(String s){
 		if(s.length()==0){return false;}
 		else{
 			int i=0,j=s.length()-1;
@@ -59,24 +78,6 @@ public class PalindromePartitioning {
 			}
 		}
 		return true;
-	}
-	
-	public static boolean[][] checkpal_DP(String s){	// DP, table[i][j] -> if s.sub(i,j) is pal
-		int n=s.length();
-		boolean[][] table=new boolean[n][n];
-		char[] chars=s.toCharArray();
-		for(int i=n-1;i>=0;i--){
-			for(int j=i;j<n;j++){
-				if(i==j){table[i][j]=true;}
-				else if(j-i==1){
-					table[i][j]=(chars[i]==chars[j]);
-				}
-				else{
-					table[i][j]=(chars[i]==chars[j] && table[i+1][j-1]);
-				}
-			}
-		}
-		return table;
 	}
 	
 	public static void main(String[] args) {

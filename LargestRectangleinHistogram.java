@@ -16,10 +16,8 @@ public class LargestRectangleinHistogram {
         	res=A[0];
         	Stack<Integer> S=new Stack<Integer>();
         	for(int i=1;i<A.length;i++){
-        		System.out.println(S+" "+res);
         		if(S.isEmpty() || A[i]>A[S.peek()]){
         			S.push(i);     			
-        			continue;
     			}
         		else{
         			int temp=S.pop();

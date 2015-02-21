@@ -16,20 +16,20 @@
 public class LinkedListCycle2 {
 
 	public ListNode detectCycle(ListNode head) {
-        if(head==null || head.next==null){return null;}
-        if(head.next==head){return head;}
+        if(head==null || head.next==null)
+            return null;
+        if(head.next==head)
+            return head;
         ListNode slow=head, fast=head.next;
         int slowval=0, fastval=1;
-        while(fast!=null && fast.next!=null){
+        while(fast!=null && fast.next!=null && slow!=fast){
         	slow=slow.next;
         	fast=fast.next.next;
         	slowval++;
         	fastval+=2;
-        	if(slow==fast){
-        		break;
-        	}
         }
-        if(fast==null || fast.next==null){return null;}
+        if(fast==null || fast.next==null)
+            return null;
         int loopsize=fastval-slowval;
         slow=head;
         fast=head;

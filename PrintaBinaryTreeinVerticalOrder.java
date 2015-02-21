@@ -45,7 +45,8 @@ public class PrintaBinaryTreeinVerticalOrder {
 	}
 	
 	public static void fillList(Node node, List<List<Integer>>res, int pos){
-		if(node==null){return;}
+		if(node==null)
+            return;
 		res.get(pos).add(node.val);
 		fillList(node.left,res,pos-1);
 		fillList(node.right,res,pos+1);

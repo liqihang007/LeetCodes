@@ -25,7 +25,7 @@ public class SearchinRotatedSortedArray2 {
 			}
 		}
 		else{
-			int mid=(int)((i+j)/2);
+			int mid=(i+j)/2;
 			return searchnum(A,i,mid,tar) || searchnum(A,mid+1,j,tar);
 		}
 	}

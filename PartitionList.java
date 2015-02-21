@@ -19,7 +19,8 @@
 public class PartitionList {
 
 	public ListNode partition(ListNode head, int x) {
-		if (head == null) return null;
+		if (head == null)
+            return null;
         ListNode leftDummy = new ListNode(0);
         ListNode rightDummy = new ListNode(0);
         ListNode left = leftDummy, right = rightDummy;

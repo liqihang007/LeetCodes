@@ -25,8 +25,6 @@ public class AddBinary {
         }
         a="0"+a;
         b="0"+b;
-//        System.out.println(a);
-//        System.out.println(b);
         boolean [] carry=new boolean [a.length()];
     	for(int i=0;i<carry.length;i++){
     		carry[i]=false;
@@ -57,8 +55,6 @@ public class AddBinary {
         if(carry[0]==true){
         	res[0]='1';
         }
-//        System.out.println(Arrays.toString(carry));
-//        System.out.println(Arrays.toString(res));
         return new String(res).trim();
     }
 	

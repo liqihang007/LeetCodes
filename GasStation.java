@@ -16,8 +16,10 @@ public class GasStation {
         		start = i+1>gas.length-1? 0 : i+1;
         	}
         }
-        if(costsum>gassum){return -1;}
-        else{return start;}
+        if(costsum>gassum)
+            return -1;
+        else
+            return start;
     }
 	
 	public static void main(String[] args) {

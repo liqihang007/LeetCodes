@@ -30,7 +30,6 @@ public class CountandSay {
 	        }
 	        ct++;
 	        s=temp;
-	        System.out.println(s);
         }
         return s;
     }

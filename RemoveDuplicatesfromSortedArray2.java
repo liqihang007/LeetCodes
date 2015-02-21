@@ -32,7 +32,6 @@ public class RemoveDuplicatesfromSortedArray2 {
         			}
         		}
         	}
-//        	System.out.println(Arrays.toString(A));
         	return count;
         }
     }

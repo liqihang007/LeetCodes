@@ -1,8 +1,8 @@
-Using O(1) time to check whether an integer n is a power of 2.
-Example
-For n=4, return true
-For n=5, return false
-		
+//Using O(1) time to check whether an integer n is a power of 2.
+//Example
+//For n=4, return true
+//For n=5, return false
+
 public class O1CheckPowerof2 {
 
 	public boolean checkPowerOf2(int n) {

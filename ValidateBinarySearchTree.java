@@ -1,5 +1,3 @@
-import ConvertSortedArraytoBinarySearchTree.TreeNode;
-
 //Given a binary tree, determine if it is a valid binary search tree (BST).
 //Assume a BST is defined as follows:
 //The left subtree of a node contains only nodes with keys less than the node's key.
@@ -17,9 +15,11 @@ import ConvertSortedArraytoBinarySearchTree.TreeNode;
  */
 
 public class ValidateBinarySearchTree {
-	boolean isRoot = true;
+	
+    boolean isRoot = true;
 	int last=Integer.MIN_VALUE;
-	public boolean isValidBST(TreeNode root) {
+	
+    public boolean isValidBST(TreeNode root) {
 		if(root==null){
 			return true;
 		}

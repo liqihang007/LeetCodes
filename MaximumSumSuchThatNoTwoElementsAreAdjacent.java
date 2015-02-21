@@ -15,9 +15,12 @@ import java.util.*;
 public class MaximumSumSuchThatNoTwoElementsAreAdjacent {
 
 	public static int MaximumSumSuchThatNoTwoElementsAreAdjacent(int[]num){	//O(n)+O(n)
-		if(num.length==0){return 0;}
-		if(num.length==1){return num[0];}
-		if(num.length==2){return Math.max(num[0], num[1]);}
+		if(num.length==0)
+            return 0;
+		if(num.length==1)
+            return num[0];
+		if(num.length==2)
+            return Math.max(num[0], num[1]);
 		int[]res=new int[num.length];
 		res[0]=num[0];
 		res[1]=num[1];

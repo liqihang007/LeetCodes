@@ -14,15 +14,9 @@
 public class MaximumDepthofBinaryTree {
 
 	public int maxDepth(TreeNode root) {
-		if(root==null){return 0;}
-		return finddp(root,0);
-    }
-	
-	public int finddp(TreeNode node, int i) {
-		if(node==null){return i;}
-		else{
-			return Math.max(finddp(node.left,i+1),finddp(node.right,i+1));
-		}
+		if(root==null)
+            return 0;
+		return 1+Math.max(maxDepth(node.left),maxDepth(node.right));
     }
 
 	public static void main(String[] args) {

@@ -6,25 +6,23 @@ import java.util.*;
 
 public class LargestNumber {
 	
-	static class StringComparator implements Comparator<String>{
-		public int compare(String a, String b){
-			if(a.length()==b.length()){
-				return b.compareTo(a);
-			}
-			else{
-				String ab=a+b;
-				String ba=b+a;
-				return ba.compareTo(ab);
-			}
-		}
-	}
-	
 	public static String largestNumber(int[] num) {
 		ArrayList<String> list=new ArrayList<String>();
 		for(int i : num){
 			list.add(String.valueOf(i));
 		}
-		Collections.sort(list,new StringComparator());
+        Collections.sort(list,new Comparator<String>(){
+            public int compare(String a, String b){
+                if(a.length()==b.length()){
+                    return b.compareTo(a);
+                }
+                else{
+                    String ab=a+b;
+                    String ba=b+a;
+                    return ba.compareTo(ab);
+                }
+            }
+        });
 		String res="";
 		for(int i=0;i<list.size();i++){
 			res+=list.get(i);

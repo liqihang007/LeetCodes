@@ -41,8 +41,9 @@ public class WordBreak2 {
 	public static boolean canBreak(String s, Set<String> dict){
 		boolean [] dp=new boolean[s.length()+1];
 		dp[0]=true;
+        int maxLength = getMaxLength(dict);
 		for(int i=1;i<=s.length();i++){
-			for(int j=i-1;j>=0;j--){
+			for(int j=i-1;j>=0 && j>=i-maxLength;j--){
 				if(dp[j] && dict.contains(s.substring(j,i))){
 					dp[i]=true;
 				}
@@ -50,6 +51,13 @@ public class WordBreak2 {
 		}
 		return dp[s.length()];
 	}
+    
+    public int getMaxLength(Set<String> dict) {
+        int maxLength = 0;
+        for (String word : dict)
+            maxLength = Math.max(maxLength, word.length());
+        return maxLength;
+    }
 	
 	public static void main(String[] args) {
 		

@@ -19,7 +19,6 @@ public class StringtoIntegerATOI {
         if(str.charAt(0)=='-'){sign=-1;};
         if(str.charAt(0)=='+'){sign=1;};
         if(sign!=0){str=str.substring(1);}
-//        System.out.println(str+" "+sign);
         if(str.length()==0){return 0;}
         int valid=0;
         for(int i=0;i<str.length();i++){

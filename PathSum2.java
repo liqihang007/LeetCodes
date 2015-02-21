@@ -36,7 +36,8 @@ public class PathSum2 {
     }
 	
 	public void checkpath(TreeNode root, int sum, List<Integer> sub,List<List<Integer>> res){
-		if(root==null){return;}
+		if(root==null)
+            return;
 		List<Integer> sub2=new ArrayList<Integer>(sub);
 		sub2.add(root.val);
 		if(root.val == sum && root.left==null && root.right==null){

@@ -28,7 +28,8 @@ public class RemoveDuplicatesfromSortedList2 {
                 while (head.next != null && head.next.val == val) {
                     head.next = head.next.next;
                 }            
-            } else {
+            }
+            else {
                 head = head.next;
             }
         }

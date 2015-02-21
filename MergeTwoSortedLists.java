@@ -17,8 +17,10 @@ import java.util.*;
 public class MergeTwoSortedLists {
 
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-		if(l1==null){return l2;}
-        if(l2==null){return l1;}
+		if(l1==null)
+            return l2;
+        if(l2==null)
+            return l1;
         ListNode root=new ListNode(0);
         ListNode head=root;
         while(l1!=null && l2!=null){

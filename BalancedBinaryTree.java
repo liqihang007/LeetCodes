@@ -17,7 +17,7 @@ private class BalancedBinaryTree {
 	
 	public boolean isBalanced(TreeNode root) {
 		if(root==null){return true;}
-        if(Math.abs(findheight(root.left,0)-findheight(root.right,0))>1){
+        if(Math.abs(findheight(root.left)-findheight(root.right))>1){
         	return false;
         }
         else{
@@ -25,11 +25,9 @@ private class BalancedBinaryTree {
         }
 	}
 	
-	public int findheight(TreeNode node,int i){
-		if(node==null){return i;}
-		else{
-			return Math.max(findheight(node.left,i+1), findheight(node.right,i+1));
-		}
+	public int findheight(TreeNode node){
+		if(node==null){return 0;}
+        return Math.max(1+findheight(node.left), 1+findheight(node.right));
 	}
 		
 	public static void main(String[] args) {

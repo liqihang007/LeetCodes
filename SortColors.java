@@ -60,7 +60,7 @@ public class SortColors {
 	public static void main(String[] args) {
 		int[] A=new int[]{0,2,1,1,0,2,2,1,0,2};
 		System.out.println(Arrays.toString(A));
-		sortColors(A);
+		new SortColors().sortColors(A);
 		System.out.println(Arrays.toString(A));
 
 	}

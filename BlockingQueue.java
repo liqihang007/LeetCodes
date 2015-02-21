@@ -9,7 +9,7 @@ public class BlockingQueue<T> {
         this.size = size;
     }
 
-    public synchronized void put (T t) throws InterruptedException {
+    public synchronized void put(T t) throws InterruptedException {
         while (isFull()) {
             wait();
         }
@@ -17,7 +17,7 @@ public class BlockingQueue<T> {
         notifyAll();
     }
 
-    public synchronized T get () throws InterruptedException {
+    public synchronized T get() throws InterruptedException {
         while (isEmpty()) {
             wait();
         }

@@ -1,16 +1,16 @@
 //Implement int sqrt(int x).
 
-public class Sqrt {
+public class Sqrt { // (x_i - x_i＋1) * f'(x_i) = f(x_i)
 	public class Solution {
 	    public int sqrt(int x) {
 	        if(x==1 || x==0){
 	            return x;
 	        }
 	        else{
-			    int n=Integer.toString(x).length()*2;
+			    int n=10;
 	            double k=(double)x;
 	            double p=k*2;
-	            for (int i=0;i<n*2;i++){
+	            for (int i=0;i<n;i++){
 	                p=(p+k/p)*0.5;
 	            }
 	            if(p<0){p=-p;}

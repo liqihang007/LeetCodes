@@ -20,10 +20,10 @@ public class MergekSortedLists {
     }
 	
 	public ListNode mergeKLists(List<ListNode> lists, int a, int b) {
-		if(a==b){return lists.get(a);}
-		if(a==b-1){
+		if(a==b)
+            return lists.get(a);
+		if(a==b-1)
 			return mergeTwoLists(lists.get(a),lists.get(b));
-		}
 		int mid=(a+b)/2;
 		ListNode tmp1= mergeKLists(lists, a, mid);
 		ListNode tmp2= mergeKLists(lists, mid+1, b);
@@ -31,8 +31,8 @@ public class MergekSortedLists {
     }
 	
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-		if(l1==null){return l2;}
-        if(l2==null){return l1;}
+		if(l1==null) return l2;
+        if(l2==null) return l1;
         ListNode root=new ListNode(0);
         ListNode head=root;
         while(l1!=null && l2!=null){

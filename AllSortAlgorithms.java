@@ -128,7 +128,7 @@ public class AllSortAlgorithms {
     	for(int i:A)
     		k=Math.max(i,k);
     	int[] B = new int[A.length];
-        int[] C = new int[k+2];
+        int[] C = new int[k+1];
         for (int j = 0; j < A.length; j++) {
             int a = A[j];
             C[a] += 1;

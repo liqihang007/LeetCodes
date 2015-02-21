@@ -21,10 +21,11 @@ public class RestoreIPAddresses {
 	        return;
 	    }
 	    for (int i=pos; i<s.length(); i++) {
-	        if (i-pos>= 3) {break;}
-	        if (!isValidNum(s.substring(pos, i+1))) {continue;}
-	        String newPath = path + "." + s.substring(pos, i+1);
-	        check(res, newPath, s, i+1, count+1);
+	        if (i-pos>= 3) break;
+	        if (isValidNum(s.substring(pos, i+1))) {
+                String newPath = path + "." + s.substring(pos, i+1);
+                check(res, newPath, s, i+1, count+1);
+            }
 	    }
 	}
 	
