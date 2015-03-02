@@ -13,12 +13,12 @@ import java.util.*;
 public class BuildTreebasedonEdges {
 
 	public class Edge {
-		  public final int parent;
-		  public final int child;
-		  Edge(int parent, int child) {
+		public final int parent;
+		public final int child;
+		Edge(int parent, int child) {
 		    this.parent = parent;
 		    this.child = child;
-		  }
+		}
 	}
 		  
 	class TreeNode{
@@ -39,36 +39,12 @@ public class BuildTreebasedonEdges {
 			TreeNode child=new TreeNode (edges.get(i).child);
 			if(hash.containsKey(parent.val))
 				parent=hash.get(parent.val);
-			else{
-				parent=new TreeNode(edges.get(i).parent);
-				child.parent=parent;
-				hash.put(child.val, child);
-			}
-			if(hash.containsKey(parent.val))
+			if(hash.containsKey(child.val))
 				child=hash.get(child.val);
-			else{
-				child.parent=parent;
-				child=new TreeNode(edges.get(i).child);
-				hash.put(child.val, child);
-			}
-			if(hash.containsKey(parent.val)){
-				if(!hash.containsKey(child.val)){
-					hash.get(parent.val).children.add(child);
-					hash.put(child.val, child);
-				}
-				else{
-					hash.get(parent.val).children.add(hash.get(child.val));
-					hash.get(child.val).parent=hash.get(parent.val);
-				}
-			}
-		else{
+			child.parent=parent;
 			parent.children.add(child);
 			hash.put(parent.val, parent);
-		}
-		if(hash.containsKey(child.val))
-				hash.get(child.val).parent=parent;
-			else
-				hash.put(child.val, child);
+			hash.put(child.val, child);
 		}
 		for(int i:hash.keySet()){
 			if(hash.get(i).parent==null)
