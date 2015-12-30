@@ -27,12 +27,12 @@ public class GrayCode {
 		for(int i=1;i<n;i++){
 			int size=set.size();
 			for(int j=size-1;j>=0;j--){
-				set.add(new String(set.get(j)));
+				set.add(new String(set.get(j))); // duplicate the set
 			}
-			for(int j=0;j<(set.size())/2;j++){
+			for(int j=0;j<(set.size())/2;j++){ // add 0 to 1st part
 				set.set(j,"0"+set.get(j));
 			}
-			for(int j=(set.size())/2;j<set.size();j++){
+			for(int j=(set.size())/2;j<set.size();j++){ // add 1 to the other part
 				set.set(j,"1"+set.get(j));
 			}
 		}

@@ -25,7 +25,7 @@ public class PalindromePartitioning2 {
         return check[len];
     }
 	
-	public static boolean[][] checkpal_DP(String s){
+	public static boolean[][] checkpal_DP(String s){ // dp[i][j]: true if string i to j is palidrome
 		int len=s.length();
 		boolean[][] table=new boolean[len][len];
 		for(int i=len-1;i>=0;i--){

@@ -77,34 +77,34 @@ public class LongestPalindromicSubstring {
 	public static String longestPalindrome(String s) {    // DP
         if(s.length()<=3){return s;}
         String sr=new StringBuilder(s).reverse().toString();
-        int[][] tab=new int[s.length()][s.length()];
-        int l=0,end=0;
+        int[][] dp=new int[s.length()][s.length()];
+        int len=0,end=0;
         for(int i=0;i<s.length();i++){
         	if(sr.charAt(0)==s.charAt(i)){
-        		tab[0][i]=1;
+        		dp[0][i]=1;
         	}
         	else{
-        		tab[0][i]=0;
+        		dp[0][i]=0;
         	}
         	if(s.charAt(0)==sr.charAt(i)){
-        		tab[i][0]=1;
+        		dp[i][0]=1;
         	}
         	else{
-        		tab[i][0]=0;
+        		dp[i][0]=0;
         	}
         }
         for(int i=1;i<s.length();i++){
         	for(int j=1;j<s.length();j++){
         		if(s.charAt(j)==sr.charAt(i)){
-        			tab[i][j]=tab[i-1][j-1]+1;
-        			if(tab[i][j]>l){
-        				l=tab[i][j];
+        			dp[i][j]=dp[i-1][j-1]+1;
+        			if(dp[i][j]>len){
+        				len=dp[i][j];
         				end=j;
         			}
         		}
         	}
         }
-        return s.substring(end-l+1,end+1);
+        return s.substring(end-len+1,end+1);
 	}
 	
 	public static void main(String[] args) {

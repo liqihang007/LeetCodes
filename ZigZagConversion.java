@@ -27,8 +27,8 @@ public class ZigZagConversion {
 	        		boolean q=true;
 	        		while(j<s.length()){
 	        			A[k]=s.charAt(j);
-	    				if(q){j=j+2*(nRows-1-i);q=false;}
-	    				else{j=j+2*(i);q=true;}
+	    				if(q){j=j+2*(nRows-1-i);q=false;} // down triangle
+	    				else{j=j+2*(i);q=true;} // triangle
 	        			k++;
 	        		}
         		}

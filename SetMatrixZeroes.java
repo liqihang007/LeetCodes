@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SetMatrixZeroes {
 
-    public void setZeroes(int[][] matrix) {
+    public static void setZeroes(int[][] matrix) {
         if(matrix == null || matrix.length == 0){return;}
         int rows = matrix.length;
         int cols = matrix[0].length;

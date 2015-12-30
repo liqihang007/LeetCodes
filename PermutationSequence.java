@@ -22,7 +22,7 @@ public class PermutationSequence {
         for(int i=0;i<n;i++){
         	int ind=k/fac;
         	k=k%fac;
-        	for(int j=0;j<n;j++){
+        	for(int j=0;j<n;j++){ // find the dig one by one
         		if(!used[j]){
         			if(ind==0){
 	        			used[j]=true;

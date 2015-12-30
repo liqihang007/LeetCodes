@@ -18,7 +18,7 @@ public class PalindromeNumber {
         while(x>0){
         	int p=x%10;
         	int q=x/j;
-        	System.out.println(p+" "+q);
+//        	System.out.println(p+" "+q);
         	if(p!=q){
         		return false;
         	}

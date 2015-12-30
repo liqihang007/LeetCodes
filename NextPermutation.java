@@ -25,13 +25,13 @@ public class NextPermutation {
 			else{
 				int diff=Integer.MAX_VALUE;
 				int which=j;
-				for(int k=j+1;k<num.length;k++){
+				for(int k=j+1;k<num.length;k++){ // find mimium dig after num[j]
 					if(num[k]>num[j] && num[k]-num[j]<diff){
 						diff=num[k]-num[j];
 						which=k;
 					}
 				}
-				int temp=num[which];
+				int temp=num[which]; // swap num[j] and num[which]
 				num[which]=num[j];
 				num[j]=temp;
 				int[] temparray=new int[num.length-1-j];

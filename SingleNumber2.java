@@ -16,9 +16,15 @@ public class SingleNumber2 {
 	public static int singleNumber(int[] A) {
         int bit1=0, bit2=0, bit3=0;
         for(int i:A){
-        	bit3=bit2 & i;
-        	bit2=(bit2 | (bit1 & i)) & ~bit3;
-        	bit1=(bit1 | i) & ~bit3;
+            bit2=bit2 | (bit1 & i);
+            bit1=bit1 ^ i;
+            bit3=bit1 & bit2;
+            bit1=bit1 & ~bit3; // reset num with 3 times to 0
+            bit2=bit2 & ~ bit3;
+            
+//        	bit3=bit2 & i;
+//        	bit2=(bit2 | (bit1 & i)) & ~bit3;
+//        	bit1=(bit1 | i) & ~bit3;
         }
 //        System.out.println(bit2);
         return bit1;

@@ -73,7 +73,7 @@ public class NQueens {
         if (n <= 0) {
             return result;
         }
-        search(n, new ArrayList<Integer>(), result);
+        search(n, new ArrayList<Integer>(), result); // Q at ith col at col[i]th row
         return result;
     }
 

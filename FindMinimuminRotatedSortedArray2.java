@@ -26,7 +26,7 @@ public class FindMinimuminRotatedSortedArray2 {
 				myreturn=Math.min(num[i],num[j]);
 			}
 			else{
-				int mid=(int)((int)(i+j)/2);
+				int mid=(i+j)/2;
 				myreturn=Math.min(checkmin(num, i,mid),checkmin(num, mid+1,j));	
 			}
 		}

@@ -18,8 +18,7 @@ import java.util.*;
 
 public class PrintaBinaryTreeinVerticalOrder {
 
-	static class Node
-	{
+	static class Node{
 	    int val;
 	    Node left;
 	    Node right;
@@ -36,7 +35,7 @@ public class PrintaBinaryTreeinVerticalOrder {
 		int[] range=new int[2];
 		range[0]=Integer.MAX_VALUE;
 		range[1]=Integer.MIN_VALUE;
-		findrange(root, range,0);
+		findrange(root, range,0); // find how many left and right (where the root is)
 		for(int i=0;i<range[1]-range[0]+1;i++){
 			res.add(new ArrayList<Integer>());
 		}

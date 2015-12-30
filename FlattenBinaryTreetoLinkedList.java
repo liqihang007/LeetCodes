@@ -57,23 +57,23 @@ public class FlattenBinaryTreetoLinkedList {
         }
 	}
 	
-	public static void flatten_Rec(TreeNode root) {
-		rec(root);
-	}
-	public static TreeNode rec(TreeNode node) {	//	Recursion
-		if (node == null) return null;
-		TreeNode tmp=node.right;
-        if(node.left!=null){
-        	node.right=node.left;
-        	node.left=null;
-        	node=rec(node.right);
-        }
-        if(tmp!=null){
-        	node.right=tmp;
-        	node=rec(node.right);
-        }
-        return node;
-	}
+//	public static void flatten_Rec(TreeNode root) { //	Recursion
+//		rec(root);
+//	}
+//	public static TreeNode rec(TreeNode node) {
+//		if (node == null) return null;
+//		TreeNode tmp=node.right;
+//        if(node.left!=null){
+//        	node.right=node.left;
+//        	node.left=null;
+//        	node=rec(node.right);
+//        }
+//        if(tmp!=null){
+//        	node.right=tmp;
+//        	node=rec(node.right);
+//        }
+//        return node;
+//	}
 	
 	public static void main(String[] args) {
 		TreeNode n1=new TreeNode(3);

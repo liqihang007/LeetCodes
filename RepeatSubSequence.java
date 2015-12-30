@@ -8,7 +8,7 @@
 
 public class RepeatSubSequence {
 
-	public static int repeatSubSequence(String s){ // modifirf LCS
+	public static int repeatSubSequence(String s){ // modified LCS
 		if(s==null || s.length()<=1){return 0;}
 		int n=s.length();
 		int [][]table=new int[n+1][n+1];
@@ -23,7 +23,7 @@ public class RepeatSubSequence {
 			}
 		}
 		return table[n][n];
-//		if(table[n][n]>1){return true;}
+//		if(table[n][n]>=2){return true;}
 //		else{return false;}
 	}
 	

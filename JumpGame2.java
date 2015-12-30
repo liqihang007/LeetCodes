@@ -9,22 +9,20 @@ public class JumpGame2 {
 
 	public static int jump(int[] A) {
         if(A==null || A.length<=1){return 0;}
-        else{
-        	int res=1;
-        	int begin=0; // where you stand
-        	int maxstep=A[0]; // the max range you can jump from "begin"
-        	
-        	while(maxstep<A.length-1){
-        		int maxrange=0; // the max range you can jump from "maxstep"
-	        	for(int i=begin;i<=maxstep;i++){
-	        		maxrange=Math.max(maxrange,i+A[i]);
-	        	}
-	        	begin=maxstep+1;
-	        	maxstep=Math.max(maxstep,maxrange);
-        		res++;
-        	}
-        	return res;
+        int res=1;
+        int begin=0; // where you stand
+        int maxstep=A[0]; // the max range you can jump from "begin"
+        
+        while(maxstep<A.length-1){
+            int maxrange=0; // the max range you can jump from "maxstep"
+            for(int i=begin;i<=maxstep;i++){
+                maxrange=Math.max(maxrange,i+A[i]);
+            }
+            begin=maxstep+1;
+            maxstep=Math.max(maxstep,maxrange);
+            res++;
         }
+        return res;
     }
 	
 	public static void main(String[] args) {

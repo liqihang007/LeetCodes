@@ -13,17 +13,15 @@ public class JumpGame {
         if (A==null || A.length==0){
         	return false;
         }
-        else{
-        	int[] B=new int[A.length];
-        	B[0]=0;
-        	for (int i=1;i<A.length;i++){
-        		B[i]=Math.max(A[i-1],B[i-1])-1;
-        		if (B[i]<0){
-        			return false;
-        		}
-        	}
-        	return true;
+        int[] dp=new int[A.length];
+        dp[0]=0;
+        for (int i=1;i<A.length;i++){
+            dp[i]=Math.max(A[i-1],dp[i-1])-1;
+            if (dp[i]<0){
+                return false;
+            }
         }
+        return true;
     }
 	
 	public static void main(String[] args) {

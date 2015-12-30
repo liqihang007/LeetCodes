@@ -23,15 +23,15 @@ public class ValidateBinarySearchTree {
 		if(root==null){
 			return true;
 		}
-		if(!isValidBST(root.left)){
+		if(!isValidBST(root.left)){ // left
 			return false;
 		}
-		if(!isRoot && last>=root.val){
+		if(!isRoot && last>=root.val){ // compare w/ largest num in left
 			return false;
 		}
 		isRoot=false;
 		last=root.val;
-		if(!isValidBST(root.right)){
+		if(!isValidBST(root.right)){ // right
 			return false;
 		}
 		return true;

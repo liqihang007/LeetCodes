@@ -14,20 +14,18 @@
 //Call isBadVersion(4), get true
 //return 4 is the first bad version
 
-public class FirstBadVersion {
+public class FirstBadVersion extends VersionControl {
 
 	public int findFirstBadVersion(int n) {
-        int low=0,high=n,res=0;
-        while(low<high){
-            int mid=low+(high-low)/2;
-            if(VersionControl.isBadVersion(mid)){
-                high=mid;
-            }
-            else{
-                low=mid+1;
-            }
+        int a=0,b=n,res=0;
+        while(a<b){
+            int mid=a+(b-a)/2;
+            if(isBadVersion(mid))
+                b=mid;
+            else
+                a=mid+1;
         }
-        return low;
+        return a;
     }
 	
 	public static void main(String[] args) {

@@ -1,4 +1,3 @@
-//I:
 //Given a binary tree, find the lowest common ancestor of two given nodes in the tree.
 //        _______3______
 //       /              \
@@ -21,9 +20,19 @@
 //         /  \
 //         7   4
 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
 public class LowestCommonAncestorofBinaryTree {
 
-	public Node LCA_I(Node root, Node p, Node q) {
+	public TreeNode LCA_I(TreeNode root, TreeNode p, TreeNode q) {
 		if (root == null) {
 	        return null;
 	    } else if (root == p) {
@@ -40,7 +49,7 @@ public class LowestCommonAncestorofBinaryTree {
 	    }
 	}
 	
-	public Node LCA_II(Node p, Node q) {
+	public TreeNode LCA_II(TreeNode p, TreeNode q) {
 		int h1 = getHeight(p);
 		int h2 = getHeight(q);
 		if (h1 > h2) {
@@ -58,7 +67,7 @@ public class LowestCommonAncestorofBinaryTree {
 		return null;  // p and q are not in the same tree
 	}
 	
-	public int getHeight(Node p) {
+	public int getHeight(TreeNode p) {
 		int height = 0;
 		while (p) {
 			height++;

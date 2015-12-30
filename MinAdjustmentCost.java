@@ -17,7 +17,7 @@ public class MinAdjustmentCost {
 		for(int i = 0; i < n; i ++) { 
 			for(int j = 1; j <= 100; j ++) { 
 				if(i == 0) { 
-					dp[i][j] = Math.abs(A[i] - j); 
+					dp[i][j] = Math.abs(A[i] - j); // initialize cost
 				} 
 				else { 
 					dp[i][j] = Integer.MAX_VALUE; 

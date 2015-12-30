@@ -17,7 +17,7 @@ import java.util.*;
 
 public class Subsets2 {
     
-    public ArrayList<ArrayList<Integer>> subsets(int[] num) {
+    public static ArrayList<ArrayList<Integer>> subsetsWithDup(int[] num) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> list = new ArrayList<Integer>();
         if(num == null || num.length ==0) {
@@ -28,7 +28,7 @@ public class Subsets2 {
         return result;
     }
     
-    private void subsetsHelper(ArrayList<ArrayList<Integer>> result,
+    private static void subsetsHelper(ArrayList<ArrayList<Integer>> result,
                                ArrayList<Integer> list, int[] num, int pos) {
         result.add(new ArrayList<Integer>(list));
         for (int i = pos; i < num.length; i++) {
@@ -63,7 +63,7 @@ public class Subsets2 {
 //    }
 	
 	public static void main(String[] args) {
-		int[] S=new int[]{1,2,2};
+		int[] S=new int[]{1,2,3};
 		System.out.println(Arrays.toString(S));
 		System.out.println(subsetsWithDup(S));
 	}

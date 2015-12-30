@@ -30,7 +30,7 @@ public class InsertionSortList {
         ListNode Dummy=new ListNode(Integer.MIN_VALUE);
         Dummy.next=head;
         ListNode p1 = Dummy, p2,p3=p1.next;
-        while(p1.next!=null){
+        while(p1.next!=null){ //p1: pointer_pre, p2:where_to_insert, p3:pointer
         	p2 = Dummy;
         	p3 = p1.next;
         	if(p3.val>=p1.val){

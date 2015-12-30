@@ -18,7 +18,7 @@ public class SurroundedRegions {
 	public void solve(char[][] board) {
         if(board.length==0 || board[0].length==0) return;
         int rows=board.length, cols=board[0].length;
-        for(int i=0;i<rows;i++){        	
+        for(int i=0;i<rows;i++){ // search only for bounders
     		dfs(board,i,0);
     		dfs(board,i,cols-1);
         }
