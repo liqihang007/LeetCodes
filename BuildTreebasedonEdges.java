@@ -53,8 +53,4 @@ public class BuildTreebasedonEdges {
 		return null;
 	}
 
-	public static void main(String[] args) {
-
-	}
-
 }

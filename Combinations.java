@@ -21,20 +21,20 @@ public class Combinations {
 		return res;
     }
 	
-	public static void check(List<List<Integer>>res, List<Integer>list, int n, int k, int pos){
+	public static void check(List<List<Integer>>res, ArrayList<Integer>list, int n, int k, int pos){
 		if(list.size()==k){
-			res.add(list);
+			res.add(new ArrayList<Integer>(list));
 			return;
 		}
-		for(int i=pos;i<=n;i++){
+		for(int i=pos; i<=n; i++){
 			list.add(i);
-			check(res,list,n,k,pos+1);
+			check(res,list,n,k,i+1);
 			list.remove(list.size()-1);
 		}
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(combine(5,3));
+		System.out.println(combine(4,2));
 	}
 
 }

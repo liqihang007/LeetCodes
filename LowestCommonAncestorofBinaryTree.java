@@ -1,4 +1,5 @@
-//Given a binary tree, find the lowest common ancestor of two given nodes in the tree.
+//Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+//According to the definition of LCA on Wikipedia: "The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself)."
 //        _______3______
 //       /              \
 //    ___5__          ___1__
@@ -6,6 +7,7 @@
 //   6      _2       0       8
 //         /  \
 //         7   4
+//For example, the lowest common ancestor (LCA) of nodes 5 and 1 is 3. Another example is LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
 //II:
 //Given a binary tree, find the lowest common ancestor of two given nodes in the tree. Each node contains a parent pointer which links to its parent.
 //
@@ -32,24 +34,22 @@
 
 public class LowestCommonAncestorofBinaryTree {
 
-	public TreeNode LCA_I(TreeNode root, TreeNode p, TreeNode q) {
-		if (root == null) {
-	        return null;
-	    } else if (root == p) {
-	        return p;
-	    } else if (root == q) {
-	        return q;
-	    }
-	    if (LCA_I(root.left, p, q) == null) {
-	        return LCA_I(root.right, p, q);
-	    } else if (LCA_I(root.right, p, q) == null) {
-	        return LCA_I(root.left, p, q);
-	    } else {
-	        return root;
-	    }
+	public TreeNode LCA_I(TreeNode root, TreeNode p, TreeNode q) { // without parent
+		if(root==null)
+        	return null;
+        if(root==p)
+        	return p;
+        if(root==q)
+        	return q;
+        TreeNode left = LCA_I(root.left, p, q);
+        TreeNode right = LCA_I(root.right, p, q);
+        if(left == null && right == null) return null;
+        if(left != null && right == null) return left;
+        if(left == null && right != null) return right;
+        return root;
 	}
 	
-	public TreeNode LCA_II(TreeNode p, TreeNode q) {
+	public TreeNode LCA_II(TreeNode p, TreeNode q) { // with parent
 		int h1 = getHeight(p);
 		int h2 = getHeight(q);
 		if (h1 > h2) {

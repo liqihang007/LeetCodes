@@ -30,10 +30,11 @@ public class LowestCommonAncestorofaBinarySearchTree {
         	return p;
         if(root==q)
         	return q;
-        if(lowestCommonAncestor(root.left,p,q)==null)
-        	return lowestCommonAncestor(root.right,p,q);
-        if(lowestCommonAncestor(root.right,p,q)==null)
-        	return lowestCommonAncestor(root.left,p,q);
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if(left == null && right == null) return null;
+        if(left != null && right == null) return left;
+        if(left == null && right != null) return right;
         return root;
     }
 
