@@ -75,30 +75,22 @@ public class LongestPalindromicSubstring {
 //	}
 	
 	public static String longestPalindrome(String s) {    // DP
-        if(s.length()<=3){return s;}
+        if(s.length()<=1) return s;
         String sr=new StringBuilder(s).reverse().toString();
-        int[][] dp=new int[s.length()][s.length()];
+        int[] dp=new int[s.length()];
         int len=0,end=0;
         for(int i=0;i<s.length();i++){
-        	if(sr.charAt(0)==s.charAt(i)){
-        		dp[0][i]=1;
-        	}
-        	else{
-        		dp[0][i]=0;
-        	}
-        	if(s.charAt(0)==sr.charAt(i)){
-        		dp[i][0]=1;
-        	}
-        	else{
-        		dp[i][0]=0;
-        	}
+        	if(sr.charAt(0)==s.charAt(i))
+        		dp[i]=1;
+        	else
+        		dp[i]=0;
         }
         for(int i=1;i<s.length();i++){
         	for(int j=1;j<s.length();j++){
         		if(s.charAt(j)==sr.charAt(i)){
-        			dp[i][j]=dp[i-1][j-1]+1;
-        			if(dp[i][j]>len){
-        				len=dp[i][j];
+        			dp[j]=dp[j-1]+1;
+        			if(dp[j]>len){
+        				len=dp[j];
         				end=j;
         			}
         		}

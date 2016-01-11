@@ -9,7 +9,7 @@ public class ContainsDuplicate2 {
         if(k==0 || nums.length<1)
         	return false;
         HashMap<Integer, Integer>map=new HashMap<Integer, Integer>();
-        for(int i=0;i<nums.length;i++){
+        for(int i=0; i<nums.length; i++){
         	if(!map.containsKey(nums[i]))
         		map.put(nums[i], i);
         	else
