@@ -39,7 +39,7 @@ public class IntersectionofTwoLinkedLists {
         	pB=pB.next;
         	j++;
         }
-        boolean which = i>j ? true : false;
+        boolean which = i>j ? true : false; // A is longer than B
         int diff = which ? i-j : j-i;
         if (i==j){diff=0;}
         pA=headA; 

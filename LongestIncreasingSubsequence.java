@@ -17,6 +17,8 @@ public class LongestIncreasingSubsequence {
             if (N<1 || x>nums[N-1])
                 nums[N++]=x;
             else if ((idx=Arrays.binarySearch(nums, 0, N, x))<0)
+                /*index of the search key, if it is contained in the array within the specified range; otherwise, (-(insertion point) - 1). The insertion point is defined as the point at which the key would be inserted into the array: the index of the first element in the range greater than the key, or toIndex if all elements in the range are less than the specified key. Note that this guarantees that the return value will be >= 0 if and only if the key is found.*/
+                    
             	/*As this statement is executed only if idx variable is negative 
             	(meaning there is no such tail in our DP part of the array at the moment), 
             	we use -(idx + 1) to convert it to the right position.

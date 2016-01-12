@@ -12,9 +12,9 @@ public class MissingNumber {
 		if(nums.length==0)
 			return 0;
 		if(nums[0]!=0)
-				return 0;
+            return 0;
 		if(nums[nums.length-1]==nums.length-1)
-				return nums.length;
+            return nums.length;
 		int a=0, b=nums.length-1;
 		while(a<b){
 			int mid=(a+b)/2;

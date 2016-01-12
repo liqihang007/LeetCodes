@@ -16,11 +16,11 @@ public class SubstringwithConcatenationofAllWords {
         HashMap<String, Integer> map = new HashMap<>();
         for(String word : words)  
         	map.put(word, map.getOrDefault(word, 0)+1);
-        List<Integer> list = new ArrayList<>();
-        int gap = words[0].length();
-        int nlen = words.length*gap;
+        List<Integer> res = new ArrayList<>();
+        int gap = words[0].length(); // same length for words in words
+        int nlen = words.length*gap; // range should has all words
         for(int k=0; k<gap; k++){
-            HashMap<String,Integer> wordmap = new HashMap<>(map);
+            HashMap<String,Integer> wordmap = new HashMap<>(map); // deepcopy cuz need to remove
             for(int i=k,j=0; i<s.length()-nlen+1 && i+j<=s.length()-gap;){
                 String temp = s.substring(i+j, i+j+gap);
                 if(wordmap.containsKey(temp)){
@@ -28,7 +28,7 @@ public class SubstringwithConcatenationofAllWords {
                     if(wordmap.get(temp)==0)    
                     	wordmap.remove(temp);
                     if(wordmap.isEmpty())   
-                    	list.add(i);
+                    	res.add(i);
                     j+=gap;
                 }
                 else{
@@ -42,6 +42,6 @@ public class SubstringwithConcatenationofAllWords {
                 }
             }
         }
-        return list;
+        return res;
     }
 }

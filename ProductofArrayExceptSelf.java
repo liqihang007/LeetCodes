@@ -12,11 +12,11 @@ public class ProductofArrayExceptSelf {
         int n=nums.length;
         int left=1, right=1;
         int []res=new int[n];
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n;i++){ // all product from left
         	res[i]=left;
         	left*=nums[i];
         }
-        for(int i=n-1;i>=0;i--){
+        for(int i=n-1;i>=0;i--){ // all product from right
         	res[i]*=right;
         	right*=nums[i];
         }

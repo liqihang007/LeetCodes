@@ -10,7 +10,7 @@ import java.util.*;
 public class HouseRobber {
 
 	public static int rob(int[] nums) {
-        int tmp1=0, tmp2=0, tmp3=0, res=0;
+        int tmp1=0, tmp2=0, tmp3=0, res=0; // ... tmp1 tmp2 tmp3 i ... ->
         for (int i=0;i<nums.length;i++){
         	int tmp=Math.max(tmp1+nums[i], tmp2+nums[i]);
         	tmp1=tmp2;

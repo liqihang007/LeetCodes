@@ -11,7 +11,7 @@ public class WordBreak {
 	public boolean wordBreak(String s, Set<String> dict) {
         boolean [] check = new boolean[s.length()+1];
         check[0]=true;
-        int maxLength = getMaxLength(dict);
+        int maxLength = getMaxLength(dict); // find longest word in dict
         for(int i=1;i<=s.length();i++){
         	for(int j=i-1;j>=0 && j>=i-maxLength;j--){
         		if(check[j] && dict.contains(s.substring(j,i))){

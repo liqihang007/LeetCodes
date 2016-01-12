@@ -6,17 +6,6 @@ import java.util.Arrays;
 //Note: 
 //You may assume k is always valid, 1 <= k <= array's length.
 
-/*The basic idea is to use Quick Select algorithm to partition the array with pivot:
-Put numbers < pivot to pivot's left
-Put numbers > pivot to pivot's right
-Then
-if indexOfPivot == k, return A[k]
-else if indexOfPivot < k, keep checking left part to pivot
-else if indexOfPivot > k, keep checking right part to pivot
-until get the kth smallest number. Because we throw away half of the array, 
-so the time complexity is O(nlgn) in average; O(n^2) in the worst case, 
-if the pivot can only partition one element each time.*/
-
 // refer to AllSortAlgorithms
 
 public class KthLargestElementinanArray {

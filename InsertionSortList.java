@@ -37,7 +37,7 @@ public class InsertionSortList {
         		p1=p1.next;
         	}
         	else{
-    			while(p2.next.val<p3.val){ // insert p3
+    			while(p2.next.val<p3.val){ // insert p3 between after p2
     				p2=p2.next;
     			}
     			p1.next=p3.next;

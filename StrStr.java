@@ -38,6 +38,9 @@ public class StrStr {
 	public static void main(String[] args) {
 		String s1="abasydvasdadaebvypitdhrwbadfa"; // 8
 		String s2="sdadaebvypitdh";
-		System.out.println(strStr(s1,s2));
+//		System.out.println(strStr(s1,s2));
+//		for(int k=0; k<=100; k++){
+//			System.out.println(Integer.toString(k,3) + " - "+k); // toString(i, r)
+//		}
 	}
 }
