@@ -27,24 +27,24 @@ public class SchedulingJobsWithDependency {
 
 	    int sorted = 0;
 	    while (sorted != n) {
-	        int p = 0;	// first find a 'p' so that depCount[p] = 0
-	        while (p < n && depCount[p] != 0) {p++;}
-	        if (p == n) {break;}
-	            // unable to find a new node to sort, sorting failed, then return null
+	        int p = 0;	// first find a 'p' so that depCount[p] = 0, no dep, can start that job
+	        while (p < n && depCount[p] != 0)
+                p++;
+	        if (p == n)
+                break; // unable to find a new node to sort, sorting failed, then return null
 	        int val = p + 1; // job's id, p is the index, the id should be +1
 	        ans[sorted] = val;
 	        sorted++;
 	        depCount[p] = -1; // job p+1 is done
 	        if (graph.containsKey(val)) {
-	            for (int i : graph.get(val)) {
+	            for (int i : graph.get(val))
 	                depCount[i - 1]--;	// release the jobs depends on job p+1
-	            }
 	        }
 	    }
 	    if (sorted == n)
 	        return ans;
 	    else
-	        return null;
+	        return null; // p==n
 	}
 	
 	public static void main(String[] args) {

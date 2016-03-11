@@ -12,7 +12,7 @@ public class FirstMissingPositive {
         int i = 0, n=A.length;
         while (i < n) {
             if (A[i] != i+1 && A[i] > 0 && A[i] <= n && A[A[i]-1] != A[i])
-                swap(A[i], A[A[i]-1]);
+                swap(A[i], A[A[i]-1]); // A[i] suppose to be at A[A[i]-1]
             else
                 i++;
         }

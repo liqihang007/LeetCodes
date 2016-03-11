@@ -11,6 +11,8 @@
 //]
 //Return ["eat","oath"].
 
+/* a loop version of WordSearch is not fast enough, so use WordTrie */
+
 import java.util.*;
 
 public class WordSearch2 {

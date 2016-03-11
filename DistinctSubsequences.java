@@ -11,16 +11,13 @@ public class DistinctSubsequences {
         else{
         	int m=T.length(), n=S.length();
         	int[][] table=new int[m][n];
-        	if(S.charAt(0)==T.charAt(0)){
+        	if(S.charAt(0)==T.charAt(0))
         		table[0][0]=1;
-        	}
         	for (int i=1;i<n;i++){
-        		if(T.charAt(0)==S.charAt(i)){
+        		if(T.charAt(0)==S.charAt(i))
         			table[0][i]=table[0][i-1]+1;
-        		}
-        		else{
+        		else
         			table[0][i]=table[0][i-1];
-        		}
         	}
         	for (int i=1;i<m;i++){
         		for(int j=i;j<n;j++){

@@ -12,21 +12,17 @@ public class LongestValidParentheses {
         int res=0;
         int left=-1;
         for(int i=0;i<s.length();i++){
-        	if(s.charAt(i)=='('){
+        	if(s.charAt(i)=='(')
         		stack.push(i);
-        	}
         	else{	// s.charAt(i)=')'
-        		if(stack.isEmpty()){
+        		if(stack.isEmpty())
         			left=i;
-        		}
         		else{
         			stack.pop();
-        			if(stack.isEmpty()){
+        			if(stack.isEmpty())
         				res=Math.max(res, i-left);
-        			}
-        			else{
+        			else
         				res=Math.max(res, i-stack.peek());
-        			}
         		}
         	}
         }

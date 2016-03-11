@@ -11,7 +11,7 @@
 //The total number of unique paths is 2.
 //Note: m and n will be at most 100.
 
-public class UniquePathsII {
+public class UniquePaths2 {
 
 	public static int uniquePathsWithObstacles(int[][] obstacleGrid) {
 		if (obstacleGrid==null){

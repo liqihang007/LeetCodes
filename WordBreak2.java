@@ -38,7 +38,7 @@ public class WordBreak2 {
 		}
 	}
 	
-	public static boolean canBreak(String s, Set<String> dict){
+	public static boolean canBreak(String s, Set<String> dict){ // check weither can break
 		boolean [] dp=new boolean[s.length()+1];
 		dp[0]=true;
         int maxLength = getMaxLength(dict);

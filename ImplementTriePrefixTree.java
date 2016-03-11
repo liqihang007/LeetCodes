@@ -7,7 +7,7 @@ public class ImplementTriePrefixTree {
 	class TrieNode {
 	    // Initialize your data structure here.
 		TrieNode[] children = new TrieNode[26];
-	    boolean isLeaf;
+	    boolean isLeaf; // isword
 	    public TrieNode() {}
 	}
 

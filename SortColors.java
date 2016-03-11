@@ -11,7 +11,7 @@ public class SortColors {
         int pr = a.length - 1;
         int i = 0;
         while(i <= pr){
-            if(a[i] == 0){
+            if(a[i] == 0){ // left color
                 swap(a, pl, i);
                 pl++;
                 i++;

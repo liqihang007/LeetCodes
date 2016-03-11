@@ -5,7 +5,7 @@ import java.util.*;
 
 public class PerfectSquares {
 
-	public static int numSquares(int n) {
+	public static int numSquares(int n) { // return the numbers
 	    int[] record = new int[n+1];
 	    for(int i=0;i<=n;i++){
 	        record[i]=i;
@@ -17,23 +17,23 @@ public class PerfectSquares {
 	    return record[n];
 	}
 	
-//	public static List<Integer> numSquareswOutput(int n) {
-//		List<List<Integer>>res=new ArrayList<List<Integer>>();
-//	    int[] record = new int[n+1];
-//	    for(int i=0;i<=n;i++){
-//	        record[i]=i;
-//	        res.add(new ArrayList<Integer>(i));
-//	        for(int j=1;j*j<=i;j++){
-//	            if(record[i-j*j]+1<record[i]){
-//	                record[i]=record[i-j*j]+1;
-//	                List tmp=new ArrayList<Integer>(res.get(i-j*j));
-//	                tmp.add(j*j);
-//	                res.set(i,tmp);
-//	            }
-//	        }
-//	    }
-//	    return res.get(n);
-//	}
+	public static List<Integer> numSquareswOutput(int n) { // output results as List
+		List<List<Integer>>res=new ArrayList<List<Integer>>();
+	    int[] record = new int[n+1];
+	    for(int i=0;i<=n;i++){
+	        record[i]=i;
+	        res.add(new ArrayList<Integer>(i));
+	        for(int j=1;j*j<=i;j++){
+	            if(record[i-j*j]+1<record[i]){
+	                record[i]=record[i-j*j]+1;
+	                List tmp=new ArrayList<Integer>(res.get(i-j*j));
+	                tmp.add(j*j);
+	                res.set(i,tmp);
+	            }
+	        }
+	    }
+	    return res.get(n);
+	}
 	
 	public static void main(String[] args) {
 		System.out.println(numSquares(12));

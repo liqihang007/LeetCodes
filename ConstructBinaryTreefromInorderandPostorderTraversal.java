@@ -22,14 +22,7 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
 	    TreeNode right;
 	    TreeNode(int x) { val = x; }
 	}
-	
-	static class TreeNode {
-		int val;
-	    TreeNode left;
-	    TreeNode right;
-	    TreeNode(int x) { val = x; }
-	}
-	
+		
 	public int findpos(int[] A, int start, int end, int tar){
 		for(int i=start;i<=end;i++){
 			if(A[i]==tar)

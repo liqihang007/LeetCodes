@@ -13,12 +13,10 @@ public class BinarySearch {
     public static int bst(int[] nums, int tar, int a, int b){
         while(a<b){
             int mid=(a+b)/2;
-            if(tar<=nums[mid]){
+            if(tar<=nums[mid])
                 b=mid;
-            }
-            else{
+            else
                 a=mid+1;
-            }
         }
         if(nums[a]==tar)
             return a;

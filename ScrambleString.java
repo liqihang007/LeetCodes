@@ -38,9 +38,12 @@ public class ScrambleString {
 */
 	
 	public static boolean isScramble(String s1, String s2) {
-        if(s1.length()!=s2.length()){return false;}
-        if(s1.length()==0){return true;}
-        if(s1.length()==1 && s1.equals(s2)){return true;}
+        if(s1.length()!=s2.length())
+            return false;
+        if(s1.length()==0)
+            return true;
+        if(s1.length()==1 && s1.equals(s2))
+            return true;
         int n=s1.length();
         boolean dp[][][]=new boolean [n][n][n];
         for(int i=0;i<n;i++){

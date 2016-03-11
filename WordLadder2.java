@@ -13,7 +13,7 @@
 //  ]
 
 /*
-Shortest path + output
+BSF shortest path + output
 */
 
 import java.util.*;

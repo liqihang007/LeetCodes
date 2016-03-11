@@ -20,9 +20,8 @@ public class EditDistance {
         for(int i=1;i<=m;i++){
         	for(int j=1;j<=n;j++){
         		int cost=0;
-        		if(word1.charAt(i-1)!=word2.charAt(j-1)){
+        		if(word1.charAt(i-1)!=word2.charAt(j-1))
         			cost=1;
-        		}
         		table[i][j]=Math.min(Math.min(table[i-1][j]+1, table[i][j-1]+1),table[i-1][j-1]+cost);
         	}
         }

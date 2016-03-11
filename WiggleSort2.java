@@ -24,9 +24,9 @@ public class WiggleSort2 {
 	    int[] temp = Arrays.copyOf(nums, n);
 	    int index = 0;
 	    for(int i=0;i<=mid;i++){
-	        nums[index] = temp[mid-i]; // insert from back
+	        nums[index] = temp[mid-i]; // insert from mid, small numbers
 	        if(index+1<n)
-	            nums[index+1] = temp[n-i-1];
+	            nums[index+1] = temp[n-i-1]; // insert from back, large numbers
 	        index += 2;
 	    }
     }

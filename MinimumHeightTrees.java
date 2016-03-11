@@ -54,13 +54,14 @@ public class MinimumHeightTrees {
         pre[start] = -1;
         while (!queue.isEmpty()) {
             int u = queue.poll();
-            for (int v : e[u])
+            for (int v : e[u])｛
                 if (!visited[v]) {
                     visited[v] = true;
                     dist[v] = dist[u] + 1;
                     queue.add(v);
                     pre[v] = u;
                 }
+            }
         }
     }
 

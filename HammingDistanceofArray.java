@@ -33,7 +33,7 @@ public class HammingDistanceofArray {
 	                bits[j]++;
 	            }
 	            j++;
-	            nums[i]/=2;
+	            nums[i]>>2;
 	        }
 	    }
 	    int res=0;

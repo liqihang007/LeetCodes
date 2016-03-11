@@ -17,16 +17,14 @@ private class BalancedBinaryTree {
 	
 	public boolean isBalanced(TreeNode root) {
 		if(root==null){return true;}
-        if(Math.abs(findheight(root.left)-findheight(root.right))>1){
+        if(Math.abs(findheight(root.left)-findheight(root.right))>1)
         	return false;
-        }
-        else{
+        else
         	return isBalanced(root.left) && isBalanced(root.right);
-        }
 	}
 	
 	public int findheight(TreeNode node){
-		if(node==null){return 0;}
+		if(node==null) return 0;
         return Math.max(1+findheight(node.left), 1+findheight(node.right));
 	}
 		

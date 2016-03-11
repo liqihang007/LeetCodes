@@ -59,18 +59,14 @@ public class TopologicalSort {
 	private int vertices;
 	private Set<Node> nodes = new HashSet<Node>();
 	private Set<Edge> edges = new HashSet<Edge>();
-	public TopologicalSort (int vertices) {
+	public TopologicalSort (int vertices)
 	    this.vertices = vertices;
-	}
-	public void addVertex(Node node){
+	public void addVertex(Node node)
 	    this.nodes.add(node);
-	}
-	public void addNodes (Set<Node> nodeList) {
+	public void addNodes (Set<Node> nodeList)
 	    this.nodes =  nodeList;
-	}
-	public void addEdge(Edge eg ){
+	public void addEdge(Edge eg )
 	    this.edges.add(eg);
-	}
 	public  Set  topologicalSort() {
 	    Queue<Node> q = new LinkedList<Node>();
 	    Set<Node> topoSort = new LinkedHashSet<Node>();
@@ -86,9 +82,8 @@ public class TopologicalSort {
 	            addToQueueToposort(child,topoSort,vertexProcessesCtr,q);
 	        }
 	    }
-	    if(vertexProcessesCtr > this.vertices) {
+	    if(vertexProcessesCtr > this.vertices)
 	        System.out.println();
-	    }
 	    return topoSort;
 	}
 	
